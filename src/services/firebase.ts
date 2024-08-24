@@ -1,4 +1,7 @@
 import '../vite-env.d.ts'
+import { getFirestore } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
@@ -10,8 +13,6 @@ const firebaseConfig = {
     measurementId: import.meta.env.VITE_APP_FIREBASE_MEASUREMENT_ID
 };
 
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const db = getFirestore(app);
