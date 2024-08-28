@@ -26,7 +26,7 @@ export function Login(){
     if (user) {
         return (
         <div>
-            <p>Signed In User: {user.email}</p>
+            <p>Logado</p>
         </div>
         );
     }
