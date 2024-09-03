@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import '../vite-env.d.ts'
 import { getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { collection, query, getDocs} from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_APP_FIREBASE_API_KEY,
@@ -16,3 +18,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+
+//get projetos do banco
+const collectionRef = query(collection(db, "projetos"))
+
+
+
+
+export async function getProjetos( callback: React.Dispatch<React.SetStateAction <any[]>> ) {
+    const response = await getDocs(collectionRef)
+    const projetos: any[] = []
+    response.forEach((doc) => {
+        projetos.push(doc.data())
+    });
+    callback(projetos)
+}
