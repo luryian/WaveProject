@@ -1,0 +1,16 @@
+.body{
+    display: flex;
+    justify-content: center;
+}
+.projetosList{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.projetoCard{
+    background-color: azure;
+    width: 30%;
+}

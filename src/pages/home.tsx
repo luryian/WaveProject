@@ -12,19 +12,16 @@ export function Home() {
     
 
     return(
-        <>
-        <nav>
-            
-        </nav>
-
-        <div>
-            {projetos.map((elem) => (
-                <div key={elem.documentId}> 
-                    <h3> {elem.nome} </h3>
-                </div>
-            ))}
+        <div className="body">
+            <div className="projetosList">
+                {projetos.map((elem) => (
+                    <div key={elem.documentId} className="projetoCard"> 
+                        <h3> {elem.nome} </h3>
+                        <p> {elem.descricao} </p>
+                    </div>
+                ))}
+            </div>
         </div>
-        </>
         
     )
 }
