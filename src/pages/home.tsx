@@ -9,15 +9,16 @@ export function Home() {
     useEffect(() => {
         getProjetos(setProjetos)
     }, [])
-    
 
     return(
         <div className="body">
             <div className="projetosList">
                 {projetos.map((elem) => (
-                    <div key={elem.documentId} className="projetoCard"> 
-                        <h3> {elem.nome} </h3>
-                        <p> {elem.descricao} </p>
+                    <div key={elem.documentId} className="projetoCard">  
+                        <a href="/detalhesPojeto" >
+                            <h3> {elem.nome} </h3>
+                            <p> {elem.descricao} </p>
+                        </a>
                     </div>
                 ))}
             </div>
@@ -25,3 +26,5 @@ export function Home() {
         
     )
 }
+
+// criar as variações com diferentes returns na home de acordo com cadda área 

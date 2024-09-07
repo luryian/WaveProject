@@ -23,9 +23,6 @@ export const db = getFirestore(app);
 //get projetos do banco
 const collectionRef = query(collection(db, "projetos"))
 
-
-
-
 export async function getProjetos( callback: React.Dispatch<React.SetStateAction <any[]>> ) {
     const response = await getDocs(collectionRef)
     const projetos: any[] = []
@@ -34,3 +31,6 @@ export async function getProjetos( callback: React.Dispatch<React.SetStateAction
     });
     callback(projetos)
 }
+
+
+// usar user storage em cada requisito implementar com as telas.

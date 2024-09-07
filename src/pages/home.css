@@ -14,3 +14,9 @@
     background-color: azure;
     width: 30%;
 }
+
+a:-webkit-any-link {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
