@@ -26,7 +26,20 @@ export function Home() {
                 <img src="" alt="logo" />
                 <input type="text" placeholder="Buscar projetos de pesquisa!" value={search} onChange={(e) => setSearch(e.target.value)}/>
             </div>
-            
+            <div className="slider-container">
+                <div className="slider">
+                </div>
+                <div className="espaco-personagem">
+                    <div className="fala"></div>
+                    <div className="personagem"></div>
+                </div>
+            </div>
+            <div className="trilhas-container">
+        
+            </div>
+            <div className="navbar-container">
+                <h1>Lista de projetos de pesquisa</h1>
+            </div>
             <div className="projetosList">
                 {filteredProjetos.map((elem) => (
                     <div key={elem.documentId} className="projetoCard"> 

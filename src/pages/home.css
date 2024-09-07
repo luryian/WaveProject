@@ -11,9 +11,14 @@
     align-items: center;
 }
 
-.body input {
+.body .header input {
     width: 100%;
     margin: 2rem;
+    border: none;
+    border-radius: 10px;
+    height: 1.5rem;
+    padding: .8rem 1rem;
+    background-color: #E3E3E3;
 }
 
 .header {
@@ -22,7 +27,7 @@
     align-items: center;
     background-color: grey;
     width: 100%;
-    padding: 1rem 10rem;
+    padding: 0rem 10rem;
 }
 
 .projetosList{
