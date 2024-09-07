@@ -46,11 +46,14 @@ export function Home() {
             <div className="listaProjetos">
                 {filteredProjetos.map((elem) => (
                     <div className="card bg-base-100 w-96 shadow-xl">
-                    <div key={elem.documentId} className="card-body">
-                        <h2 className="card-title">{elem.nome}</h2>
-                        <p>{elem.Codernador}</p>
+                        <div key={elem.documentId} className="card-body card-text">
+                            <h2 className="card-title">{elem.nome}</h2>
+                        </div>
+                        <div className="card-actions justify-between items-center">
+                            <p>{elem.Codernador}</p>
+                            <div className="badge badge-outline">{elem.trilha}</div>
+                        </div>
                     </div>
-                </div>
                 ))}
             </div>
             <Footer />

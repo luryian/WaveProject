@@ -73,3 +73,11 @@
     width: 30%;
 }
 
+/* .card {
+    padding: .3rem;
+} */
+
+.card-body {
+    padding: .3rem;
+}
+
