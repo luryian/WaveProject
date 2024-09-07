@@ -6,7 +6,7 @@ import Search from "../components/Search/Search";
 import logo from '../assets/logo.png';
 import trilhas from '../assets/trilhas.png';
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
-import Carousel from "../components/Carousel/Carousel"
+// import Carousel from "../components/Carousel/Carousel"
 
 
 export function Home() {
@@ -28,10 +28,8 @@ export function Home() {
         <div className="body">
             <div className="header">
                 <img src={logo} alt="logo" className="logo" />
-                <Search search={search} setSearch={setSearch}/>
             </div>
 
-            <Carousel />
             
             <div className="trilhas-container">
                 <img src={trilhas} alt="trilha-design" />
@@ -40,10 +38,7 @@ export function Home() {
                 <img src={trilhas} alt="trilha-jogos" />
             </div>
             <div className="navbar-container">
-                <span className="flex items-center">
-                    <span className="pr-6">Lorem, ipsum dolor</span>
-                    <span className="h-px flex-1 bg-black"></span>
-                </span>
+                <Search search={search} setSearch={setSearch}/>
                 <DropdownFilter/>
             </div>
             <div className="listaProjetos">
