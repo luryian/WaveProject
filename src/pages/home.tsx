@@ -6,6 +6,7 @@ import Search from "../components/Search/Search";
 import logo from '../assets/logo.png';
 import trilhas from '../assets/trilhas.png';
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
+import Footer from "../components/Footer/Footer"
 // import Carousel from "../components/Carousel/Carousel"
 
 
@@ -52,7 +53,7 @@ export function Home() {
                 </div>
                 ))}
             </div>
-            
+            <Footer />
         </div>
         
     )
