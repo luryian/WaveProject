@@ -1,12 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
 import { useEffect, useState } from "react";
 import "./home.css";
 import { getProjetos } from "../services/firebase";
+import Search from "../components/Search/Search";
+import logo from '../assets/logo.png';
+import { Swiper, SwiperSlide} from 'swiper/react';
+import trilhas from '../assets/trilhas.png';
+import data from '../components/Swiper/SwiperData';
 
 export function Home() {
     const [projetos, setProjetos] = useState<any[]>([])
-    const [search, setSearch] = React.useState("");
+    const [search, setSearch] = useState("");
 
 
     useEffect(() => {
@@ -18,24 +22,36 @@ export function Home() {
         elem.nome.toLowerCase().includes(search.toLowerCase()) // Comparação em letras minúsculas para evitar case sensitivity
     );
 
-    console.log(search);
 
     return(
         <div className="body">
             <div className="header">
-                <img src="" alt="logo" />
-                <input type="text" placeholder="Buscar projetos de pesquisa!" value={search} onChange={(e) => setSearch(e.target.value)}/>
+                <img src={logo} alt="logo" className="logo" />
+                <Search search={search} setSearch={setSearch}/>
             </div>
-            <div className="slider-container">
-                <div className="slider">
-                </div>
-                <div className="espaco-personagem">
-                    <div className="fala"></div>
-                    <div className="personagem"></div>
-                </div>
+            <div>
+                <Swiper
+                    slidesPerView={3}
+                    pagination={{ clickable: true }}
+                    navigation={true}
+                    className="slide-container"
+                >
+                    {data.map((item) => (
+                        <SwiperSlide key={item.id}>
+                            <img 
+                                src={item.image} 
+                                alt="Slider"
+                                className="slide-imagem"
+                            />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </div>
             <div className="trilhas-container">
-        
+                <img src={trilhas} alt="trilha-design" />
+                <img src={trilhas} alt="trilha-audiovisual" />
+                <img src={trilhas} alt="trilha-programacao" />
+                <img src={trilhas} alt="trilha-jogos" />
             </div>
             <div className="navbar-container">
                 <h1>Lista de projetos de pesquisa</h1>
