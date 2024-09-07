@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
 .body{
     display: flex;
     justify-content: center;
@@ -9,15 +15,28 @@
     width: 100%;
     margin: 2rem;
 }
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: grey;
+    width: 100%;
+    padding: 1rem 10rem;
+}
+
 .projetosList{
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
+    padding: 1rem 10rem;
+
 }
 
 .projetoCard{
     background-color: azure;
     width: 30%;
 }
+

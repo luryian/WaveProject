@@ -22,7 +22,11 @@ export function Home() {
 
     return(
         <div className="body">
-            <input type="text" placeholder="Buscar projetos!" value={search} onChange={(e) => setSearch(e.target.value)}/>
+            <div className="header">
+                <img src="" alt="logo" />
+                <input type="text" placeholder="Buscar projetos de pesquisa!" value={search} onChange={(e) => setSearch(e.target.value)}/>
+            </div>
+            
             <div className="projetosList">
                 {filteredProjetos.map((elem) => (
                     <div key={elem.documentId} className="projetoCard"> 
