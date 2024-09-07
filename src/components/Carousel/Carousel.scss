@@ -1,0 +1,37 @@
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 500px; /* Altura fixa do slider */
+  }
+  
+  .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .carousel-item.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .carousel-item.prev {
+    transform: translateX(-100%);
+  }
+  
+  .carousel-item.next {
+    transform: translateX(100%);
+  }
+  
+  .carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta a imagem ao container */
+  }
+  

@@ -4,10 +4,9 @@ import "./home.css";
 import { getProjetos } from "../services/firebase";
 import Search from "../components/Search/Search";
 import logo from '../assets/logo.png';
-import { Swiper, SwiperSlide} from 'swiper/react';
 import trilhas from '../assets/trilhas.png';
-import data from '../components/Swiper/SwiperData';
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
+import Carousel from "../components/Carousel/Carousel"
 
 
 export function Home() {
@@ -31,24 +30,9 @@ export function Home() {
                 <img src={logo} alt="logo" className="logo" />
                 <Search search={search} setSearch={setSearch}/>
             </div>
-            <div>
-                <Swiper
-                    slidesPerView={3}
-                    pagination={{ clickable: true }}
-                    navigation={true}
-                    className="slide-container"
-                >
-                    {data.map((item) => (
-                        <SwiperSlide key={item.id}>
-                            <img 
-                                src={item.image} 
-                                alt="Slider"
-                                className="slide-imagem"
-                            />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
+
+            <Carousel />
+            
             <div className="trilhas-container">
                 <img src={trilhas} alt="trilha-design" />
                 <img src={trilhas} alt="trilha-audiovisual" />
@@ -56,7 +40,10 @@ export function Home() {
                 <img src={trilhas} alt="trilha-jogos" />
             </div>
             <div className="navbar-container">
-                <h1>Lista de projetos de pesquisa</h1>
+                <span className="flex items-center">
+                    <span className="pr-6">Lorem, ipsum dolor</span>
+                    <span className="h-px flex-1 bg-black"></span>
+                </span>
                 <DropdownFilter/>
             </div>
             <div className="listaProjetos">
@@ -64,8 +51,7 @@ export function Home() {
                     <div className="card bg-base-100 w-96 shadow-xl">
                     <div key={elem.documentId} className="card-body">
                         <h2 className="card-title">{elem.nome}</h2>
-                        <p>{elem.descricao}</p>
-                        <p>{elem.codernador}</p>
+                        <p>{elem.Codernador}</p>
                     </div>
                 </div>
                 ))}
