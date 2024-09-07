@@ -20,7 +20,8 @@ export function Home() {
       
 
     const filteredProjetos = projetos.filter((elem) =>
-        elem.nome.toLowerCase().includes(search.toLowerCase()) // Comparação em letras minúsculas para evitar case sensitivity
+        elem.nome.toLowerCase().includes(search.toLowerCase()) ||
+    elem.Codernador.toLowerCase().includes(search.toLowerCase()) // Comparação em letras minúsculas para evitar case sensitivity
     );
 
 
