@@ -6,16 +6,21 @@ import Search from "../components/Search/Search";
 import logo from '../assets/logo.png';
 import { Swiper, SwiperSlide} from 'swiper/react';
 import trilhas from '../assets/trilhas.png';
-import data from '../components/Swiper/SwiperData';
+import { getSliders } from '../components/Swiper/SwiperData';
 
 export function Home() {
     const [projetos, setProjetos] = useState<any[]>([])
+    const [sliders, setSliders] = useState<any[]>([])
     const [search, setSearch] = useState("");
-
 
     useEffect(() => {
         getProjetos(setProjetos)
+        
     }, [])
+      
+    useEffect(() => {
+          getSliders(setSliders)
+        }, []) 
     
 
     const filteredProjetos = projetos.filter((elem) =>
@@ -36,7 +41,7 @@ export function Home() {
                     navigation={true}
                     className="slide-container"
                 >
-                    {data.map((item) => (
+                    {sliders.map((item) => (
                         <SwiperSlide key={item.id}>
                             <img 
                                 src={item.image} 
