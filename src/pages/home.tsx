@@ -13,11 +13,11 @@ export function Home() {
     const [projetos, setProjetos] = useState<any[]>([])
     const [search, setSearch] = useState("");
 
-
     useEffect(() => {
         getProjetos(setProjetos)
+        
     }, [])
-    
+      
 
     const filteredProjetos = projetos.filter((elem) =>
         elem.nome.toLowerCase().includes(search.toLowerCase()) // Comparação em letras minúsculas para evitar case sensitivity
