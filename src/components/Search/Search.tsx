@@ -12,7 +12,7 @@ const Search: React.FC<SearchProps> = ({ search, setSearch }) => {
     };
 
     return (
-        <form action="" className="input">
+        <form action="" className="pesquisa-container">
             <div className="relative">
                 <input 
                     type="text" 
@@ -25,5 +25,7 @@ const Search: React.FC<SearchProps> = ({ search, setSearch }) => {
         </form>
     );
 };
+
+
 
 export default Search;

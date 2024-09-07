@@ -7,6 +7,8 @@ import logo from '../assets/logo.png';
 import { Swiper, SwiperSlide} from 'swiper/react';
 import trilhas from '../assets/trilhas.png';
 import data from '../components/Swiper/SwiperData';
+import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
+
 
 export function Home() {
     const [projetos, setProjetos] = useState<any[]>([])
@@ -55,15 +57,20 @@ export function Home() {
             </div>
             <div className="navbar-container">
                 <h1>Lista de projetos de pesquisa</h1>
+                <DropdownFilter/>
             </div>
-            <div className="projetosList">
+            <div className="listaProjetos">
                 {filteredProjetos.map((elem) => (
-                    <div key={elem.documentId} className="projetoCard"> 
-                        <h3> {elem.nome} </h3>
-                        <p> {elem.descricao} </p>
+                    <div className="card bg-base-100 w-96 shadow-xl">
+                    <div key={elem.documentId} className="card-body">
+                        <h2 className="card-title">{elem.nome}</h2>
+                        <p>{elem.descricao}</p>
+                        <p>{elem.codernador}</p>
                     </div>
+                </div>
                 ))}
             </div>
+            
         </div>
         
     )
