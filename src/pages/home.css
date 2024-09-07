@@ -1,9 +1,66 @@
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
 .body{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
 }
-.projetosList{
-    width: 80%;
+
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(178, 178, 178);
+    width: 100%;
+    padding: 0rem 10rem;
+    justify-content: center;
+}
+
+.logo{
+    width: min-content;
+}
+
+.slide-container {
+    width: 100%;
+    height: 25rem; /* Ajuste conforme necessário */
+}
+
+.slide-imagem {
+    width: 20rem;
+    height: auto;
+}
+
+.trilhas-container {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    margin: 4rem 0rem;
+}
+
+.trilhas-container img {
+    width: 14rem;
+    height: auto;
+}
+
+.navbar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75%;
+    margin: 4rem 0rem;
+}
+
+
+.listaProjetos {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -15,8 +72,3 @@
     width: 30%;
 }
 
-a:-webkit-any-link {
-    color: black;
-    cursor: pointer;
-    text-decoration: none;
-}

@@ -1,0 +1,19 @@
+.form {
+    background-color: red;
+}
+
+.pesquisa {
+    width: 58rem;
+    margin: 2rem;
+    border: none;
+    border-radius: 16px;
+    height: 2.5rem;
+    padding: .8rem 1rem;
+    background-color: #E3E3E3;
+}
+
+.pesquisa:focus {
+    outline: none; /* Remove o contorno padrão do navegador */
+    border: 1px solid #3f4041; /* Adiciona uma borda azul quando o campo está em foco */
+    box-shadow: 0 0 5px rgba(105, 105, 105, 0.5); /* Adiciona uma sombra azul ao redor do campo */
+}
