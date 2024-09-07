@@ -1,3 +1,5 @@
+
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,6 +11,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
 }
 
 
@@ -48,14 +51,20 @@
     height: auto;
 }
 
-.projetosList{
-    width: 100%;
+.navbar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75%;
+    margin: 4rem 0rem;
+}
+
+
+.listaProjetos {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
-    padding: 1rem 10rem;
-
 }
 
 .projetoCard{
