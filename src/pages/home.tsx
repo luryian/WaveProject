@@ -13,18 +13,20 @@ import Footer from "../components/Footer/Footer"
 export function Home() {
     const [projetos, setProjetos] = useState<any[]>([])
     const [search, setSearch] = useState("");
+    const [trilhaSelecionada, setTrilhaSelecionada] = useState<string | null>(null);
 
     useEffect(() => {
         getProjetos(setProjetos)
-        
     }, [])
 
+    const filteredByTrilha = trilhaSelecionada
+    ? projetos.filter((elem) => elem.trilha === trilhaSelecionada)
+    : projetos;
 
-    const filteredProjetos = projetos.filter((elem) =>
+    const filteredProjetos = filteredByTrilha.filter((elem) =>
         elem.nome.toLowerCase().includes(search.toLowerCase()) ||
-    elem.Codernador.toLowerCase().includes(search.toLowerCase()) // Comparação em letras minúsculas para evitar case sensitivity
-    );
-
+        elem.Codernador.toLowerCase().includes(search.toLowerCase()) // Comparação sem case sensitivity
+      );
 
     return(
         <div className="body">
@@ -41,7 +43,7 @@ export function Home() {
             </div>
             <div className="navbar-container">
                 <Search search={search} setSearch={setSearch}/>
-                <DropdownFilter/>
+                <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} />
             </div>
             <div className="listaProjetos">
                 {filteredProjetos.map((elem) => (
@@ -59,4 +61,7 @@ export function Home() {
             <Footer />
         </div>
     )
+
+    
 }
+
