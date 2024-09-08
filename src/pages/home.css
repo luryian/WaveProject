@@ -61,16 +61,15 @@
 
 
 .listaProjetos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-    margin-bottom: 3rem;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows: 200px;
+    
 }
 
-.projetoCard{
-    background-color: azure;
-    width: 30%;
+.card {
+    margin-bottom: 1rem;
 }
 
 /* .card {
