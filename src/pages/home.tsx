@@ -18,7 +18,7 @@ export function Home() {
         getProjetos(setProjetos)
         
     }, [])
-      
+
 
     const filteredProjetos = projetos.filter((elem) =>
         elem.nome.toLowerCase().includes(search.toLowerCase()) ||
@@ -58,6 +58,5 @@ export function Home() {
             </div>
             <Footer />
         </div>
-        
     )
 }
