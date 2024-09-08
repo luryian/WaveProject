@@ -7,7 +7,7 @@ import logo from '../assets/logo.png';
 import trilhas from '../assets/trilhas.png';
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
 import Footer from "../components/Footer/Footer"
-// import Carousel from "../components/Carousel/Carousel"
+import Carousel from "../components/Carousel/Carousel"
 
 
 export function Home() {
@@ -33,8 +33,7 @@ export function Home() {
             <div className="header">
                 <img src={logo} alt="logo" className="logo" />
             </div>
-
-            
+            {/* <Carousel/> */}
             <div className="trilhas-container">
                 <img src={trilhas} alt="trilha-design" />
                 <img src={trilhas} alt="trilha-audiovisual" />
