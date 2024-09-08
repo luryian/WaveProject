@@ -43,7 +43,7 @@ export function Home() {
             </div>
             <div className="navbar-container">
                 <Search search={search} setSearch={setSearch}/>
-                <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} />
+                <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
             </div>
             <div className="listaProjetos">
                 {filteredProjetos.map((elem) => (
