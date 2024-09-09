@@ -1,7 +1,7 @@
 import "./login.css"
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { auth } from "../services/firebase";
 import { useState } from "react";
+import { auth } from "../services/firebase";
 
 export function Login(){
     const [email, setEmail] = useState('');
@@ -15,14 +15,46 @@ export function Login(){
 
     if (error) {
         return (
-        <div>
-            <p>Error: {error.message}</p>
-        </div>
+            <div className="LoginBody">
+            <div className="LoginForm">
+                <div className="Loginlogocircular">
+                    <p> LOGO </p>
+                </div>
+
+                <label className="InputLabel">E-mail</label>
+                <input
+                    className="LoginInput"
+                    name="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                    
+                <label className="InputLabel" >Senha</label>
+                <input
+                    className="LoginInput"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+
+                <p className="LoginErrado">E-mail ou Senha Incorretos</p>
+
+                <a href="/" className="naoSouAdm"> Não sou Administrador </a>
+                
+                <button className="LoginButton" onClick={() => signInWithEmailAndPassword(email, password)}>
+                Log In
+                </button>
+                </div>
+    </div>
+        
         );
     }
+
     if (loading) {
         return <p>Loading...</p>;
     }
+
     if (user) {
         return (
         <div>
@@ -30,23 +62,38 @@ export function Login(){
         </div>
         );
     }
+
     return (
-        <div className="Form">
-        <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-        />
-        <br></br>
-        <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-        />
-        <br></br>
-        <button onClick={() => signInWithEmailAndPassword(email, password)}>
-            Sign In
-        </button>
-        </div>
+        <div className="LoginBody">
+            <div className="LoginForm">
+                <div className="Loginlogocircular">
+                    <p> LOGO </p>
+                </div>
+
+                <label className="InputLabel">E-mail</label>
+                <input
+                    className="LoginInput"
+                    name="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                    
+                <label className="InputLabel" >Senha</label>
+                <input
+                    className="LoginInput"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+
+                <a href="/" className="naoSouAdm"> Não sou Administrador </a>
+                
+                <button className="LoginButton" onClick={() => signInWithEmailAndPassword(email, password)}>
+                Log In
+                </button>
+                </div>
+    </div>
+        
     );
 }

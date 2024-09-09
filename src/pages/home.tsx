@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import "./home.css";
-import { getProjetos } from "../services/firebase";
+
 import Search from "../components/Search/Search";
 import logo from '../assets/logo.png';
 import { Swiper, SwiperSlide} from 'swiper/react';
 import trilhas from '../assets/trilhas.png';
 import { getSliders } from '../components/Swiper/SwiperData';
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
+import { getProjetos } from "../services/firebase";
 
 
 export function Home() {
