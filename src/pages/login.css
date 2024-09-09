@@ -51,6 +51,7 @@
     margin: 2rem 0 2.5rem 0;
     color: black;
     font-size: large;
+    text-decoration: underline;
 }
 
 .LoginButton{

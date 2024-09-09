@@ -47,12 +47,13 @@
 
    font-size: 25px;
    max-width: 90%;
+   font-weight: bolder;
     
 }
 
 .description{
     max-width: 90%;
-    padding-top: 15px ;
+    padding-top: 40px ;
     padding-bottom: 155px;
     font-size: 18px;
 
