@@ -1,5 +1,4 @@
 
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -55,20 +54,58 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 75%;
-    margin: 4rem 0rem;
+    align-items: center;
+    width: 80%;
+    margin: 3rem 0rem;
 }
 
 
 .listaProjetos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    -o-column-count: 3;
+    column-count: 3;
+    
 }
 
-.projetoCard{
-    background-color: azure;
-    width: 30%;
+.card {
+    margin-bottom: 1rem;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid-column;
 }
 
+.Button_SM{
+
+   border: 1px solid;
+   width: 25%; 
+   padding: 10px 0px;
+   border-radius: 15px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+    
+}
+
+.Button_SM_details{
+
+   font-size: 14px;
+   
+    
+}
+
+
+.Button_SM:hover{
+     transition-duration: 0.2s;
+     scale: 1.1;
+    
+}
+/* .card {
+    padding: .3rem;
+} */
+/* 
+.card-body {
+    padding: .3rem;
+}
+ */
