@@ -1,6 +1,7 @@
 import React from "react";
 import './Search.scss';
 
+
 interface SearchProps {
     search: string;
     setSearch: (value: string) => void;

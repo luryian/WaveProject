@@ -75,6 +75,32 @@
     break-inside: avoid-column;
 }
 
+.Button_SM{
+
+   border: 1px solid;
+   width: 25%; 
+   padding: 10px 0px;
+   border-radius: 15px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+    
+}
+
+.Button_SM_details{
+
+   font-size: 14px;
+   
+    
+}
+
+
+.Button_SM:hover{
+     transition-duration: 0.2s;
+     scale: 1.1;
+    
+}
 /* .card {
     padding: .3rem;
 } */
