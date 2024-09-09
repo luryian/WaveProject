@@ -1,24 +1,29 @@
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y, Virtual } from 'swiper/modules';
-import CarouselData from './CarouselData'
-// Import Swiper styles
-import 'swiper/css';
+import React from 'react';
+import { Carousel } from 'antd';
 
-export default function Corousel() {
-  return (
-    <div className="Carousel">
-        {CarouselData.map((elem) => (
-            <Swiper
-                key={elem.id}
-                modules={[Virtual]} 
-                spaceBetween={50} 
-                slidesPerView={3} 
-                virtual
-                >
-                <SwiperSlide>{elem.image}</SwiperSlide>
-            </Swiper>
-        ))}
-    </div>
-  );
+const contentStyle: React.CSSProperties = {
+  height: '400px',
+  color: '#fff',
+  lineHeight: '160px',
+  textAlign: 'center',
+  background: '#364d79',
 };
+
+const Carrossel: React.FC = () => (
+  <Carousel autoplay>
+    <div>
+      <h3 style={contentStyle}>1</h3>
+    </div>
+    <div>
+      <h3 style={contentStyle}>2</h3>
+    </div>
+    <div>
+      <h3 style={contentStyle}>3</h3>
+    </div>
+    <div>
+      <h3 style={contentStyle}>4</h3>
+    </div>
+  </Carousel>
+);
+
+export default Carrossel;
