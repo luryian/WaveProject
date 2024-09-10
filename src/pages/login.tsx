@@ -2,6 +2,9 @@ import "./login.css"
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useState } from "react";
 import { auth } from "../services/firebase";
+import { Link, useHref } from "react-router-dom";
+import { Home } from "./home";
+
 
 
 export function Login(){
@@ -24,16 +27,20 @@ export function Login(){
 
                 <label className="InputLabel">E-mail</label>
                 <input
-                    className="LoginInput"
-                    name="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+                className="LoginInputEmail"
+                name="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                >
+
+                </input>
+                
+                    
                     
                 <label className="InputLabel" >Senha</label>
                 <input
-                    className="LoginInput"
+                    className="LoginInputSenha"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -58,9 +65,7 @@ export function Login(){
 
     if (user) {
         return (
-        <div>
-            <p>Logado</p>
-        </div>
+            <Home></Home>
         );
     }
 
@@ -72,22 +77,27 @@ export function Login(){
                 </div>
 
                 <label className="InputLabel">E-mail</label>
+
                 <input
-                    className="LoginInput"
+                    className="LoginInputEmail"
                     name="email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                />
+                    
+                >
+                </input>
                     
                 <label className="InputLabel" >Senha</label>
                 <input
-                    className="LoginInput"
+                    className="LoginInputSenha"
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                />
+                > 
+                </input>
 
+                
                 <a href="/" className="naoSouAdm"> Não sou Administrador </a>
                 
                 <button className="LoginButton" onClick={() => signInWithEmailAndPassword(email, password)}>

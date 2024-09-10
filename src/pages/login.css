@@ -3,7 +3,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: 92vh;
 }
 
 .LoginForm{
@@ -31,12 +31,27 @@
     font-size: xx-large;
 } 
 
-.LoginInput{
+.LoginInputEmail{
     width: 80%;
     background-color: rgb(230,230,230);
-    height: 2rem;
+    height: 2.5rem;
     border-radius: 0.4rem;
-    padding-left: 0.5rem;
+    padding-left: 2.3rem;
+    background-image: url("../assets/profileiIcon.png") ;
+    background-repeat: no-repeat;
+    background-position: 0.7rem;
+}
+
+.LoginInputSenha{
+    width: 80%;
+    background-color: rgb(230,230,230);
+    height: 2.5rem;
+    border-radius: 0.4rem;
+    padding-left: 2.3rem;
+    background-image: url("../assets/passwordIcon.png");
+    background-repeat: no-repeat;
+    background-position: 0.7rem;
+    background-size: 16px;
 }
 
 .InputLabel{
