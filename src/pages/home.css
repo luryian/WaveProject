@@ -11,6 +11,12 @@
     flex-direction: column;
 }
 
+.body-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 15rem;
+}
+
 .container {
     display: flex;
     margin: auto;
@@ -40,6 +46,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 6rem;
 }
 
 .trilhas-container img {
@@ -52,6 +59,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 3rem;
 }
 
 
