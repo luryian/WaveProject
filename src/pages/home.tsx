@@ -6,7 +6,6 @@ import logo from '../assets/logo.png';
 import trilhas from '../assets/trilhas.png';
 import { getProject } from "../components/Cards/cards";
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
-import Footer from "../components/Footer/Footer";
 import Search from "../components/Search/Search";
 import { getProjetos } from "../services/firebase";
 import Footer from "../components/Footer/Footer"
@@ -74,7 +73,7 @@ export function Home() {
             <div className="listaProjetos">
                 {filteredProjetos.map((elem) => (
                     <div className="card bg-base-100 w-96 shadow-xl">
-                        <div className="Button_SM"> 
+                        <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
                             <a href="/details"><button className="Button_SM_details"> saiba mais</button></a>
 
                         </div>
