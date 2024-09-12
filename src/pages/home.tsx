@@ -36,7 +36,9 @@ export function Home() {
                 <img src={logo} alt="logo" className="logo" />
             </div>
 
-            <Carrossel />
+            <div className="carrossel">
+                <Carrossel />
+            </div>
             
             <div className="body-container">
                 <div className="trilhas-container">
