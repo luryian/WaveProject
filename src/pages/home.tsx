@@ -2,19 +2,34 @@
 import { useEffect, useState } from "react";
 import "./home.css";
 
-import Search from "../components/Search/Search";
 import logo from '../assets/logo.png';
 import trilhas from '../assets/trilhas.png';
+import { getProject } from "../components/Cards/cards";
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
+import Footer from "../components/Footer/Footer";
+import Search from "../components/Search/Search";
 import { getProjetos } from "../services/firebase";
 import Footer from "../components/Footer/Footer"
 import { getAuth } from "firebase/auth"; 
 
 // import Carousel from "../components/Carousel/Carousel"
 
+export interface Project {
+    Carga: string
+    Codernador: string
+    Empresa: string
+    ID: string
+    Inicio: string
+    Remuneração: string
+    Status: string
+    documentId: string
+    nome: string
+    trilha: string
+}
+
 
 export function Home() {
-    const [projetos, setProjetos] = useState<any[]>([])
+    const [projetos, setProjetos] = useState<Project[]>([])
     const [search, setSearch] = useState("");
     const [trilhaSelecionada, setTrilhaSelecionada] = useState<string | null>(null);
 
@@ -100,9 +115,8 @@ export function Home() {
             <div className="listaProjetos">
                 {filteredProjetos.map((elem) => (
                     <div className="card bg-base-100 w-96 shadow-xl">
-                        <div className="Button_SM"> 
-                            <a href="/details"><button className="Button_SM_details"> saiba mais</button></a>
-
+                        <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
+                            <a href={`/details/${elem.documentId}`}><button className="Button_SM_details"> saiba mais</button></a>
                         </div>
                         <div key={elem.documentId} className="card-body card-text">
                             <h2 className="card-title">{elem.nome}</h2>

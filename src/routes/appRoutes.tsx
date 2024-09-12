@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Details } from "../pages/details";
 import { Home } from "../pages/home";
 import { Login } from "../pages/login";
-import { Details } from "../pages/details";
 
 export function AppRoutes(){
     return(
@@ -9,7 +9,7 @@ export function AppRoutes(){
             <Routes>
                     <Route path="/" element={<Home/>}> </Route>
                     <Route path="/admin" element={<Login/>}> </Route>
-                    <Route path="/details" element ={<Details/>}> </Route>
+                    <Route path="/details/:projectId" element ={<Details/>}> </Route>
             </Routes>
         </BrowserRouter>
     )
