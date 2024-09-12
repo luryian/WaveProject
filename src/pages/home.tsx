@@ -7,7 +7,7 @@ import logo from '../assets/logo.png';
 import trilhas from '../assets/trilhas.png';
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
 import Footer from "../components/Footer/Footer"
-import Carrossel from "../components/Carousel/Carousel"
+// import Carrossel from "../components/Carousel/Carousel"
 
 
 export function Home() {
