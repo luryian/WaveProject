@@ -9,10 +9,23 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
-    overflow-x: hidden;
 }
 
+.body-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 15rem;
+}
+
+.container {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+    gap: 3.5rem;
+}
 
 .header {
     display: flex;
@@ -28,21 +41,16 @@
     width: min-content;
 }
 
-.slide-container {
+.carrossel {
     width: 100%;
-    height: 25rem; /* Ajuste conforme necessário */
-}
-
-.slide-imagem {
-    width: 20rem;
-    height: auto;
+    margin-bottom: 6rem;
 }
 
 .trilhas-container {
     display: flex;
     justify-content: space-between;
-    width: 75%;
-    margin: 4rem 0rem;
+    width: 100%;
+    margin-bottom: 6rem;
 }
 
 .trilhas-container img {
@@ -55,8 +63,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
-    margin: 3rem 0rem;
+    margin-bottom: 3rem;
 }
 
 
@@ -69,10 +76,11 @@
 }
 
 .card {
-    margin-bottom: 1rem;
+    width: 100%;
     -webkit-column-break-inside: avoid;
     page-break-inside: avoid;
     break-inside: avoid-column;
+    margin-bottom: 1.5rem;
 }
 
 .Button_SM{
