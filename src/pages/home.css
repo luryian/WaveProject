@@ -84,31 +84,31 @@
 }
 
 .Button_SM{
-
-   border: 1px solid;
-   width: 25%; 
-   padding: 10px 0px;
-   border-radius: 15px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-
-    
-}
-
-.Button_SM_details{
-
-   font-size: 14px;
-   
-    
-}
-
-
-.Button_SM:hover{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+ 
+ .Button_SM_details{
+ 
+    font-size: 14px;
+    border: 1px solid;
+    padding: 10px 10px;
+    border-radius: 15px;
+     
+ }
+ 
+ .button_Editar:hover{
      transition-duration: 0.2s;
      scale: 1.1;
-    
-}
+ }
+ 
+ 
+ .Button_SM_details:hover{
+      transition-duration: 0.2s;
+      scale: 1.2;
+     
+ }
 /* .card {
     padding: .3rem;
 } */
