@@ -7,7 +7,7 @@ import trilhas from '../assets/trilhas.png';
 import { getProject } from "../components/Cards/cards";
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
 import Search from "../components/Search/Search";
-import { getProjetos } from "../services/firebase";
+import { getProjetos, logout } from "../services/firebase";
 import Footer from "../components/Footer/Footer"
 import { getAuth } from "firebase/auth"; 
 
@@ -107,7 +107,6 @@ export function Home() {
         <div className="body">
             <div className="header">
                 <img src={logo} alt="logo" className="logo" />
-                <h3> Página de Admin </h3>
             </div>
             <div className="carrossel">
                 <Carousel></Carousel>

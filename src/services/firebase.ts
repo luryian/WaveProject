@@ -32,5 +32,13 @@ export async function getProjetos( callback: React.Dispatch<React.SetStateAction
     callback(projetos)
 }
 
+export function logout() {
+    auth.signOut().then(() => {
+      console.log('Usuário deslogado com sucesso!');
+    }).catch((error) => {
+      console.error('Erro ao deslogar:', error);
+    });
+  }
+
 
 // usar user storage em cada requisito implementar com as telas.
