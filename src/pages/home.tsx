@@ -119,11 +119,10 @@ export function Home() {
 
             <div className="body-container">
                 <div className="trilhas-container">
-                <img onClick={() => handleImageClick('/design')} src={trilhas} alt="trilha-design" />
-                <button onClick={() => handleImageClick('/design')}> </button>
-                    <img src={trilhas} alt="trilha-audiovisual" />
-                    <img src={trilhas} alt="trilha-programacao" />
-                    <img src={trilhas} alt="trilha-jogos" />
+                    <img onClick={() => handleImageClick('/design')} src={trilhas} alt="trilha-design" className="img-trilha"/>
+                    <img onClick={() => handleImageClick('/audiovisual')} src={trilhas} alt="trilha-audiovisual" />
+                    <img onClick={() => handleImageClick('/sistemas')} src={trilhas} alt="trilha-programacao" />
+                    <img onClick={() => handleImageClick('/jogos')} src={trilhas} alt="trilha-jogos" />
                 </div>
                 <div className="navbar-container">
                     <Search search={search} setSearch={setSearch}/>

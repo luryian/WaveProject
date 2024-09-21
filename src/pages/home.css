@@ -56,7 +56,9 @@
 .trilhas-container img {
     width: 14rem;
     height: auto;
+    cursor: pointer;
 }
+
 
 .navbar-container {
     display: flex;
