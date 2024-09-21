@@ -16,7 +16,7 @@ const [project, setProject] = useState<Project>()
 const [search, setSearch] = useState("");
 
 async function handleProject() {
-    setProject(await getProject(projectId) as Project)
+    setProject(await getProject(projectId as string) as Project)
 }
 
 useEffect(() => {
@@ -56,7 +56,4 @@ useEffect(() => {
     </div>
         
     )
-
-    
-
 }

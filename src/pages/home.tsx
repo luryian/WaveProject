@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import "./home.css";
 
+import { useNavigate} from 'react-router-dom';
 import logo from '../assets/logo.png';
 import trilhas from '../assets/trilhas.png';
 import { getProject } from "../components/Cards/cards";
@@ -28,6 +29,7 @@ export interface Project {
 
 
 export function Home() {
+    const navigate = useNavigate();
     const [projetos, setProjetos] = useState<Project[]>([])
     const [search, setSearch] = useState("");
     const [trilhaSelecionada, setTrilhaSelecionada] = useState<string | null>(null);
@@ -45,10 +47,12 @@ export function Home() {
         elem.Codernador.toLowerCase().includes(search.toLowerCase()) // Comparação sem case sensitivity
       );
 
-
-
     const auth = getAuth();
     const user = auth.currentUser;
+
+    const handleImageClick = (path: string) => {
+        navigate(path); // Caminho para onde quer redirecionar
+    };
 
     if (user){
         console.log(user)
@@ -64,7 +68,8 @@ export function Home() {
 
             <div className="body-container">
                 <div className="trilhas-container">
-                    <img src={trilhas} alt="trilha-design" />
+                    <img onClick={() => handleImageClick('/design')} src={trilhas} alt="trilha-design" />
+                    <button onClick={() => handleImageClick('/design')}> </button>
                     <img src={trilhas} alt="trilha-audiovisual" />
                     <img src={trilhas} alt="trilha-programacao" />
                     <img src={trilhas} alt="trilha-jogos" />
@@ -114,7 +119,8 @@ export function Home() {
 
             <div className="body-container">
                 <div className="trilhas-container">
-                    <img src={trilhas} alt="trilha-design" />
+                <img onClick={() => handleImageClick('/design')} src={trilhas} alt="trilha-design" />
+                <button onClick={() => handleImageClick('/design')}> </button>
                     <img src={trilhas} alt="trilha-audiovisual" />
                     <img src={trilhas} alt="trilha-programacao" />
                     <img src={trilhas} alt="trilha-jogos" />
