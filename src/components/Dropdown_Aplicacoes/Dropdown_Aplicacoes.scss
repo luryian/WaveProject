@@ -1,0 +1,23 @@
+.filtros {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-control {
+    .label {
+        display: flex;
+        gap: 10px;
+    }
+}
+
+.active {
+    color: blueviolet;
+}
+
+.limpar-filtro {
+    font-weight: 700;
+}
+  

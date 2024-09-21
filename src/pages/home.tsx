@@ -7,6 +7,7 @@ import logo from '../assets/logo.png';
 import trilhas from '../assets/trilhas.png';
 import { getProject } from "../components/Cards/cards";
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
+import DropdownAplicacao from '../components/Dropdown_Aplicacoes/Dropdown_Aplicacoes';
 import Search from "../components/Search/Search";
 import { getProjetos, logout } from "../services/firebase";
 import Footer from "../components/Footer/Footer"
@@ -15,6 +16,8 @@ import { getAuth } from "firebase/auth";
  import Carousel from "../components/Carousel/Carousel"
 
 export interface Project {
+    [x: string]: string;
+    aplicacao: string;
     Carga: string
     Codernador: string
     Empresa: string
@@ -33,20 +36,32 @@ export function Home() {
     const [projetos, setProjetos] = useState<Project[]>([])
     const [search, setSearch] = useState("");
     const [trilhaSelecionada, setTrilhaSelecionada] = useState<string | null>(null);
+    const [aplicacaoSelecionada, setAplicacaoSelecionada] = useState<string | null>(null);
+
 
     useEffect(() => {
         getProjetos(setProjetos)
     }, [])
 
+    // Primeiro, filtramos pela trilha se a trilha estiver selecionada, senão retornamos todos os projetos.
     const filteredByTrilha = trilhaSelecionada
     ? projetos.filter((elem) => elem.trilha === trilhaSelecionada)
     : projetos;
 
-    const filteredProjetos = filteredByTrilha.filter((elem) =>
-        elem.nome.toLowerCase().includes(search.toLowerCase()) ||
-        elem.Codernador.toLowerCase().includes(search.toLowerCase()) // Comparação sem case sensitivity
-      );
+    // Depois, filtramos pela aplicação se a aplicação estiver selecionada, senão retornamos todos os projetos.
+    const filteredByAplicacao = aplicacaoSelecionada
+    ? projetos.filter((elem) => elem.aplicação === aplicacaoSelecionada)
+    : projetos;
 
+    // A seguir, combinamos os dois filtros. Se ambos forem filtrados, fazemos a interseção, ou seja, projetos que passam em ambos os filtros.
+    // Se um deles não estiver filtrado (ou seja, tiver todos os projetos), então ele não altera o resultado final.
+    const filteredProjetos = projetos
+    .filter((elem) => filteredByTrilha.includes(elem))
+    .filter((elem) => filteredByAplicacao.includes(elem))
+    .filter((elem) =>
+        elem.nome.toLowerCase().includes(search.toLowerCase()) ||
+        elem.Codernador.toLowerCase().includes(search.toLowerCase()) 
+    );
     const auth = getAuth();
     const user = auth.currentUser;
 
@@ -127,6 +142,7 @@ export function Home() {
                 <div className="navbar-container">
                     <Search search={search} setSearch={setSearch}/>
                     <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
+                    <DropdownAplicacao setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
                 </div> 
                 <div className="listaProjetos">
                     {filteredProjetos.map((elem) => (
