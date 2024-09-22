@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import "./home.css";
 
+import FilterFeedback from "../components/FilterFeedback/FilterFeedback";
 import { useNavigate} from 'react-router-dom';
 import logo from '../assets/logo.png';
 import trilhas from '../assets/trilhas.png';
@@ -143,7 +144,10 @@ export function Home() {
                     <Search search={search} setSearch={setSearch}/>
                     <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
                     <DropdownAplicacao setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
-                </div> 
+                </div>
+                <div className="filter-feedback">
+                    <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
+                </div>
                 <div className="listaProjetos">
                     {filteredProjetos.map((elem) => (
                         <div className="card bg-base-100 w-96 shadow-xl" key={elem.documentId}>
