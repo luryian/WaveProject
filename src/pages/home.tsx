@@ -13,8 +13,7 @@ import Search from "../components/Search/Search";
 import { getProjetos, logout } from "../services/firebase";
 import Footer from "../components/Footer/Footer"
 import { getAuth } from "firebase/auth"; 
-
- import Carousel from "../components/Carousel/Carousel"
+import Carousel from "../components/Carousel/Carousel"
 
 export interface Project {
     [x: string]: string;
