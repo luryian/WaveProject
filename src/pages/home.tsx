@@ -4,8 +4,13 @@ import "./home.css";
 
 import FilterFeedback from "../components/FilterFeedback/FilterFeedback";
 import { useNavigate} from 'react-router-dom';
-import logo from '../assets/logo.png';
+import personagem_falando from '../assets/personagem_falando.svg'
+import logo_expedition from '../assets/logo_expedition.svg';
 import trilhas from '../assets/trilhas.png';
+import audiovisualapp from '../assets/audiouvisualpp.svg'
+import sistemas_mini from '../assets/sistemas_mini.svg'
+import jogos_mini from '../assets/jogos_mini.svg'
+import design_mini from '../assets/design_mini.svg';
 import { getProject } from "../components/Cards/cards";
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
 import DropdownAplicacao from '../components/Dropdown_Aplicacoes/Dropdown_Aplicacoes';
@@ -75,7 +80,7 @@ export function Home() {
         return(
             <div className="body">
             <div className="header">
-                <img src={logo} alt="logo" className="logo" />
+                <img src={logo_expedition} alt="logo" className="logo" />
                 <h3> Página de Admin </h3>
             </div>
             <div className="carrossel">
@@ -86,7 +91,7 @@ export function Home() {
                 <div className="trilhas-container">
                     <img onClick={() => handleImageClick('/design')} src={trilhas} alt="trilha-design" />
                     <button onClick={() => handleImageClick('/design')}> </button>
-                    <img src={trilhas} alt="trilha-audiovisual" />
+                    <img src={audiovisualapp} alt="trilha-audiovisual" />
                     <img src={trilhas} alt="trilha-programacao" />
                     <img src={trilhas} alt="trilha-jogos" />
                 </div>
@@ -128,18 +133,30 @@ export function Home() {
     return(
         <div className="body">
             <div className="header">
-                <img src={logo} alt="logo" className="logo" />
+                <img src={logo_expedition} alt="logo" className="logo" />
+                <div className="header-trilhas">
+                    <a href="">Sistemas</a>
+                    <a href="">Design</a>
+                    <a href="">Audiovisual</a>
+                    <a href="">Jogos</a>
+                    <a href="">Aplicações</a>
+                </div>
             </div>
             <div className="carrossel">
                 <Carousel></Carousel>
             </div>
-
+            <div className="personagem">
+                <img src={personagem_falando} alt="" />
+            </div>
             <div className="body-container">
-                <div className="trilhas-container">
-                    <img onClick={() => handleImageClick('/design')} src={trilhas} alt="trilha-design" className="img-trilha"/>
-                    <img onClick={() => handleImageClick('/audiovisual')} src={trilhas} alt="trilha-audiovisual" />
-                    <img onClick={() => handleImageClick('/sistemas')} src={trilhas} alt="trilha-programacao" />
-                    <img onClick={() => handleImageClick('/jogos')} src={trilhas} alt="trilha-jogos" />
+                <div className="trilhas">
+                    <h2 className="-">Trilhas</h2>
+                    <div className="trilhas-container">
+                        <img onClick={() => handleImageClick('/design')} src={design_mini} alt="trilha-design" className="img-trilha"/>
+                        <img onClick={() => handleImageClick('/audiovisual')} src={audiovisualapp} alt="trilha-audiovisual" />
+                        <img onClick={() => handleImageClick('/sistemas')} src={sistemas_mini} alt="trilha-programacao" />
+                        <img onClick={() => handleImageClick('/jogos')} src={jogos_mini} alt="trilha-jogos" />
+                    </div>
                 </div>
                 <div className="navbar-container">
                     <Search search={search} setSearch={setSearch}/>
