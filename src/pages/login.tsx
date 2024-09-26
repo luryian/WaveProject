@@ -3,6 +3,8 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useState } from "react";
 import { auth } from "../services/firebase";
 import { Home } from "./home";
+import logoHorizontal from '../assets/logoHorizontal.png';
+import ondaSemFundo from "../assets/onda_semfundo.png";
 
 
 
@@ -20,8 +22,8 @@ export function Login(){
         return (
             <div className="LoginBody">
             <div className="LoginForm">
-                <div className="Loginlogocircular">
-                    <p> LOGO </p>
+                <div className="Loginlogo">
+                    <img src={logoHorizontal}></img>
                 </div>
 
                 <label className="InputLabel">E-mail</label>
@@ -53,6 +55,7 @@ export function Login(){
                 Log In
                 </button>
                 </div>
+                <img className="ondaLogin" src={ondaSemFundo}></img>
     </div>
         
         );
@@ -71,8 +74,8 @@ export function Login(){
     return (
         <div className="LoginBody">
             <div className="LoginForm">
-                <div className="Loginlogocircular">
-                    <p> LOGO </p>
+                <div className="Loginlogo">
+                    <img src={logoHorizontal}></img>
                 </div>
 
                 <label className="InputLabel">E-mail</label>
@@ -103,6 +106,8 @@ export function Login(){
                 Log In
                 </button>
                 </div>
+
+                <img className="ondaLogin" src={ondaSemFundo}></img>
     </div>
         
     );
