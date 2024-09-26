@@ -23,7 +23,6 @@ import { Slider } from "../components/Slider/Slider";
 
 export interface Project {
     [x: string]: string;
-    aplicacao: string;
     Carga: string
     Codernador: string
     Empresa: string
