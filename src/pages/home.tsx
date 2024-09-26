@@ -164,29 +164,32 @@ export function Home() {
                     <div className="navbar-container">
                         <Search search={search} setSearch={setSearch}/>
                     </div>
-                    <div className="filter-feedback">
-                        <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
-                    </div>
+                    
                     <div className="filter-projetos">
                         <div className="left-filter">
                             <CategoryFilters setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
                         </div>
                         <div className="listaProjetos">
-                            {filteredProjetos.map((elem) => (
-                                <a href={`/details/${elem.documentId}`}>
-                                    <div className="card bg-base-100 w-96 shadow-xl" key={elem.documentId}>
-                                        <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
+                            <div className="filter-feedback">
+                                <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
+                            </div>
+                            <div className="cards-projetos">
+                                {filteredProjetos.map((elem) => (
+                                    <a href={`/details/${elem.documentId}`}>
+                                        <div className="card bg-base-100 w-96 shadow-xl" key={elem.documentId}>
+                                            <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
+                                            </div>
+                                            <div key={elem.documentId} className="card-body card-text">
+                                                <h2 className="card-title">{elem.nome}</h2>
+                                            </div>
+                                            <div className="card-actions justify-between items-center">
+                                                <p>{elem.Codernador}</p>
+                                                <div className="badge badge-outline">{elem.trilha}</div>
+                                            </div>
                                         </div>
-                                        <div key={elem.documentId} className="card-body card-text">
-                                            <h2 className="card-title">{elem.nome}</h2>
-                                        </div>
-                                        <div className="card-actions justify-between items-center">
-                                            <p>{elem.Codernador}</p>
-                                            <div className="badge badge-outline">{elem.trilha}</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            ))}
+                                    </a>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
