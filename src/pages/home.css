@@ -57,9 +57,28 @@
     margin-bottom: 6rem;
 }
 
+.carrosselAdmin{
+    margin-top: 2rem;
+    width: 70%;
+    margin-bottom: 0rem;
+    position: relative;
+    z-index: 1;
+}
+
+.ondaAdmin{
+    width: 100%;
+    position:relative;
+    z-index: 0;
+    bottom: 0;
+}
+
+
+
 .personagem {
     margin-bottom: 6rem;
     width: 70%;
+    position: relative;
+    z-index: 0;
 }
 
 .trilhas {
@@ -95,6 +114,11 @@
     background-color: #92ADA4;
 }
 
+.projetos-containerAdmin{
+    padding: 0rem 15rem 0 15rem;
+    background-color: #92ADA4;
+}
+
 .navbar-container {
     display: flex;
     width: 100%;
@@ -122,6 +146,9 @@
     font-size: 65px;
     font-weight: 600;
     margin-bottom: 2.5rem;
+
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -157,15 +184,9 @@
  
  .button_Editar:hover{
      transition-duration: 0.2s;
-     scale: 1.1;
+     scale: 1;
  }
  
- 
- .Button_SM_details:hover{
-      transition-duration: 0.2s;
-      scale: 1.2;
-     
- }
 
 
 /* .card {

@@ -25,7 +25,7 @@ useEffect(() => {
 
     return(
 
-        <div className="body">
+        <div className="bodyDetails">
               <div className="header">
                 <a href="/"><img src={logo} alt="logo" className="logo" /></a>
                 <Search search={search} setSearch={setSearch}/>

@@ -5,17 +5,17 @@ import { useParams } from "react-router-dom";
 import { getProject } from "../components/Cards/cards";
 import "./editarProjeto.css"
 import { Project } from "./home";
-import Footer from "../components/Footer/Footer";
-import Search from "../components/Search/Search";
-import logo from '../assets/logo.png';
 import { db } from "../services/firebase";
 import { doc, updateDoc } from "firebase/firestore";
+import logo_expedition from '../assets/logo_expedition.svg';
+
+
 
 export function EditarProjeto(){
     const { projectId } = useParams()
 
     const [project, setProject] = useState<Project>()    
-    const [search, setSearch] = useState("");
+    
     
     async function handleProject() {
         setProject(await getProject(projectId) as Project)
@@ -30,62 +30,72 @@ export function EditarProjeto(){
         let linksValue = (document.getElementById('links') as HTMLInputElement).value
         let trilhaValue = (document.getElementById('trilha') as HTMLInputElement).value
         let aplicacaoValue = (document.getElementById('aplicacao') as HTMLInputElement).value
+        let finalizadoValue = (document.getElementById('finalizado') as HTMLInputElement).checked
+        let vagasValue = (document.getElementById('vagas') as HTMLInputElement).value
+        let vagasAreaValue = (document.getElementById('vagasArea') as HTMLInputElement).value
+
+
+
         const Ref = doc(db, "projetos", projectId);
 
         await updateDoc(Ref, {
             descricao: descricaoValue,
             links: linksValue,
             trilha: trilhaValue,
-            aplicação: aplicacaoValue
+            aplicação: aplicacaoValue,
+            finalizado: finalizadoValue,
+            vagas: vagasValue,
+            vagasArea: vagasAreaValue,
         });
 
-        console.log('atualizou')
+        alert("Projeto editado com sucesso")
 
     }
     
     return(
     
-    <div className="body">
-        <div className="header">
-          <a href="/"><img src={logo} alt="logo" className="logo" /></a>
-          <Search search={search} setSearch={setSearch}/>
+    <div className="bodyEdit">
+        <div className="headerEdit">
+          <a href="/"><img src={logo_expedition} alt="logo" className="logoEdit" /></a>
       </div>
 
      
-        <main>
-        <div className="info_top">
-            <div className="slider">
-                <img src="src\assets\imgDetails_fake.svg" alt="slider" width={800} className="img"/>
-                <p className="footer_img"></p>
-            </div>
-            <div className="filter">
-                <p className="status"> iccon ativo</p> 
-                <p className="status">iccon design</p>
-                <p className="status" >iccon bolsista</p>
+        <main className="mainEdit">
 
-            </div>
-        </div>
+            <h1 className="editarProjeto">Adicione ou edite as informações adicionais desse Projeto</h1>
 
         <div className="text">
-            <h1 className="title">{project?.nome}</h1>
+            <h2 className="title">{project?.nome}</h2>
 
-            <label> descrição: </label>
-            <input className="textInput" id="descricao" value={project?.descricao}></input>
+            <div className="checkdiv">
+                <label className="labelText"> Projeto finalizado?</label>
+                <input type="checkbox" id="finalizado" ></input>
+            </div>
 
-            <label> Links importantes: </label>
+            <label className="labelText"> Links importantes: </label>
             <input className="textInput" id="links" value={project?.links}></input>
 
-            <label> Trilha: </label>
+            <label className="labelText"> Trilha: </label>
             <input className="textInput" id="trilha" value={project?.trilha}></input>
 
-            <label> Aplicação: </label>
+            <label className="labelText"> Aplicação: </label>
             <input className="textInput" id="aplicacao" value={project?.aplicacao}></input>
+
+            <label className="labelText"> Se possui vagas disponiveis, quantas? </label>
+            <input type="number" className="textInput" id="vagas" value={project?.vagas}></input>
+
+            <label className="labelText"> As vagas disponiveis são para qual aréa? </label>
+            <input className="textInput" id="vagasArea" value={project?.vagasArea}></input>
+
+            <label className="labelText"> Links importantes: </label>
+            <input className="textInput" id="links" value={project?.links}></input>
+
+            <label className="labelText"> descrição: </label>
+            <textarea className="textInput" id="descricao" value={project?.descricao}></textarea>
 
             <button id="salvar" onClick={salvar}> Salvar </button>
         </div>
         </main>
-
-        <Footer/>
         </div>
             
 )
