@@ -55,6 +55,7 @@
     margin-top: 2rem;
     width: 70%;
     margin-bottom: 6rem;
+    align-self: center;
 }
 
 .carrosselAdmin{
@@ -63,6 +64,7 @@
     margin-bottom: 0rem;
     position: relative;
     z-index: 1;
+    align-self: center;
 }
 
 .ondaAdmin{

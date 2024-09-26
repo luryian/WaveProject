@@ -50,14 +50,14 @@
     border: 1px solid black;
     margin-bottom: 2rem;
     margin-top: 0.3rem;
-    width: 100%;
+    width: 90%;
     padding: 0.3rem;
     border-radius: 6px
 }
 
 .checkdiv{
     display: flex;
-    width: 100%;
+    width: 90%;
     margin: 2rem 0;
 }
 
@@ -75,7 +75,7 @@
     background-color: black;
     color: white;
     padding: 0.5rem 0rem;
-    width: 20%;
+    width: 90%;
     margin: 0.5rem 0 3rem;
     border-radius: 12px;
     font-weight: bold;

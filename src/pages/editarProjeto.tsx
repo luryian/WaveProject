@@ -46,10 +46,17 @@ export function EditarProjeto(){
             finalizado: finalizadoValue,
             vagas: vagasValue,
             vagasArea: vagasAreaValue,
-        });
+        }).then(() => {
+            if (alert("Projeto editado com sucesso, click ok para visualizar o projeto")) {
+                // O alert não retorna nada, então o redirecionamento é feito logo após o alert ser fechado
+                window.location.href = `/details/${projectId}`; // substitua "/home" pelo caminho da sua página inicial
+              } else {
+                // Como o alert só possui o botão "OK", o redirecionamento acontece de qualquer forma
+                window.location.href = `/details/${projectId}`;
+              }
+        })
 
-        alert("Projeto editado com sucesso")
-
+        
     }
     
     return(

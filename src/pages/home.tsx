@@ -6,7 +6,6 @@ import FilterFeedback from "../components/FilterFeedback/FilterFeedback";
 import { useNavigate} from 'react-router-dom';
 import personagem_falando from '../assets/personagem_falando.svg'
 import logo_expedition from '../assets/logo_expedition.svg';
-import trilhas from '../assets/trilhas.png';
 import audiovisualapp from '../assets/audiouvisualpp.svg'
 import sistemas_mini from '../assets/sistemas_mini.svg'
 import jogos_mini from '../assets/jogos_mini.svg'
@@ -38,7 +37,7 @@ export interface Project {
     descricao: string
     links: string
     aplicacao: string
-    vaga: boolean
+    vagas: number
 }
 
 
