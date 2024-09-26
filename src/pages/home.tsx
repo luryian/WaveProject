@@ -20,6 +20,7 @@ import Footer from "../components/Footer/Footer"
 import { getAuth } from "firebase/auth"; 
 import Carousel from "../components/Carousel/Carousel"
 import { Slider } from "../components/Slider/Slider";
+import { getTrilha } from "../components/ilhasFilter/ilhasFilter";
 
 export interface Project {
     [x: string]: string;
@@ -46,8 +47,6 @@ export function Home() {
     const [search, setSearch] = useState("");
     const [trilhaSelecionada, setTrilhaSelecionada] = useState<string | null>(null);
     const [aplicacaoSelecionada, setAplicacaoSelecionada] = useState<string | null>(null);
-
-
     useEffect(() => {
         getProjetos(setProjetos)
     }, [])
@@ -97,6 +96,7 @@ export function Home() {
                     <img src={audiovisualapp} alt="trilha-audiovisual" />
                     <img src={trilhas} alt="trilha-programacao" />
                     <img src={trilhas} alt="trilha-jogos" />
+                
                 </div>
                 <div className="navbar-container">
                     <Search search={search} setSearch={setSearch}/>
@@ -155,10 +155,10 @@ export function Home() {
                 <div className="trilhas">
                     <h2 className="-">Trilhas</h2>
                     <div className="trilhas-container">
-                        <img onClick={() => handleImageClick('/design')} src={design_mini} alt="trilha-design" className="img-trilha"/>
-                        <img onClick={() => handleImageClick('/audiovisual')} src={audiovisualapp} alt="trilha-audiovisual" />
-                        <img onClick={() => handleImageClick('/sistemas')} src={sistemas_mini} alt="trilha-programacao" />
-                        <img onClick={() => handleImageClick('/jogos')} src={jogos_mini} alt="trilha-jogos" />
+                        <a onClick={() => handleImageClick('/design')}><img onClick={() => getTrilha('design')} src={design_mini} alt="trilha-design" className="img-trilha"/></a> 
+                        <a onClick={() =>  handleImageClick('/audiovisual')}> <img onClick={() => getTrilha('audivisual')} src={audiovisualapp} alt="trilha-audiovisual" /></a>
+                        <a onClick={()=> handleImageClick('/sistemas')}> <img onClick={() => getTrilha('sistemas') } src={sistemas_mini} alt="trilha-programacao" /> </a>
+                        <a onClick={() =>  handleImageClick('/jogos')}> <img onClick={() => getTrilha('jogos')} src={jogos_mini} alt="trilha-jogos" /></a>
                     </div>
                 </div>
                 <div className="projetos-container">
