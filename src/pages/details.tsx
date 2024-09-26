@@ -16,7 +16,7 @@ const [project, setProject] = useState<Project>()
 const [search, setSearch] = useState("");
 
 async function handleProject() {
-    setProject(await getProject(projectId) as Project)
+    setProject(await getProject(projectId as string) as Project)
 }
 
 useEffect(() => {
@@ -39,9 +39,9 @@ useEffect(() => {
                 <p className="footer_img"></p>
             </div>
             <div className="filter">
-                <p className="status"> iccon ativo</p> 
-                <p className="status">iccon design</p>
-                <p className="status" >iccon bolsista</p>
+                <p className="status"> icon ativo</p> 
+                <p className="status">icon design</p>
+                <p className="status" >icon bolsista</p>
 
             </div>
         </div>
@@ -56,7 +56,4 @@ useEffect(() => {
     </div>
         
     )
-
-    
-
 }
