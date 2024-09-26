@@ -158,32 +158,41 @@ export function Home() {
                         <img onClick={() => handleImageClick('/jogos')} src={jogos_mini} alt="trilha-jogos" />
                     </div>
                 </div>
-                <div className="navbar-container">
-                    <Search search={search} setSearch={setSearch}/>
-                    <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
-                    <DropdownAplicacao setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
-                    <Slider/>
-                </div>
-                <div className="filter-feedback">
-                    <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
-                </div>
-                <div className="listaProjetos">
-                    {filteredProjetos.map((elem) => (
-                        <a href={`/details/${elem.documentId}`}>
-                            <div className="card bg-base-100 w-96 shadow-xl" key={elem.documentId}>
-                                <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
-                                </div>
-                                <div key={elem.documentId} className="card-body card-text">
-                                    <h2 className="card-title">{elem.nome}</h2>
-                                </div>
-                                <div className="card-actions justify-between items-center">
-                                    <p>{elem.Codernador}</p>
-                                    <div className="badge badge-outline">{elem.trilha}</div>
-                                    
-                                </div>
-                            </div>
-                        </a>
-                    ))}
+                <div className="projetos-container">
+                    <div className="projetos-title">
+                        <h2>Projetos de pesquisa</h2>
+                    </div>
+                    <div className="navbar-container">
+                        <Search search={search} setSearch={setSearch}/>
+                    </div>
+                    <div className="filter-feedback">
+                        <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
+                    </div>
+                    <div className="filter-projetos">
+                        <div className="left-filter">
+                            <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
+                            <DropdownAplicacao setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
+                            <Slider/>
+                        </div>
+                        <div className="listaProjetos">
+                            {filteredProjetos.map((elem) => (
+                                <a href={`/details/${elem.documentId}`}>
+                                    <div className="card bg-base-100 w-96 shadow-xl" key={elem.documentId}>
+                                        <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
+                                        </div>
+                                        <div key={elem.documentId} className="card-body card-text">
+                                            <h2 className="card-title">{elem.nome}</h2>
+                                        </div>
+                                        <div className="card-actions justify-between items-center">
+                                            <p>{elem.Codernador}</p>
+                                            <div className="badge badge-outline">{elem.trilha}</div>
+                                            
+                                        </div>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
             <Footer />

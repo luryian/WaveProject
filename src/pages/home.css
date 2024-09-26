@@ -17,7 +17,7 @@
 .body-container {
     display: flex;
     flex-direction: column;
-    padding: 0rem 15rem;
+    width: 100%;
 }
 
 .container {
@@ -39,7 +39,7 @@
     justify-content: space-between;
     font-weight: 600;
     color: #FCF4DF;
-    padding: 0 9.5rem 0 7.5rem;
+    padding: 0 14rem 0 12rem;
 }
 
 .header-trilhas {
@@ -53,25 +53,35 @@
 
 .carrossel {
     margin-top: 2rem;
-    width: 80%;
+    width: 70%;
     margin-bottom: 6rem;
 }
 
 .personagem {
     margin-bottom: 6rem;
+    width: 70%;
+}
+
+.trilhas {
+    width: 100%;
+    padding: 0 15rem;
+    background-image: url('../assets/onda_semfundo.svg');
+    background-size: cover; /* A imagem cobre toda a área da div */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
 }
 
 .trilhas-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 6rem;
 }
 
 .trilhas h2 {
     color: #940203;
     font-size: 65px;
     font-weight: 600;
+    margin-bottom: 2.5rem;
 }
 
 .trilhas-container img {
@@ -80,11 +90,15 @@
     cursor: pointer;
 }
 
+.projetos-container {
+    padding: 5rem 15rem 0 15rem;
+    background-color: #92ADA4;
+}
 
 .navbar-container {
     display: flex;
+    width: 100%;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     margin-bottom: .5rem;
 }
@@ -93,17 +107,33 @@
     margin-bottom: 3rem;
 }
 
+.left-filter {
+    display: flex;
+    flex-direction: column;
+    width: 12rem;
+}
+
+.filter-projetos {
+    display: flex;
+}
+
+.projetos-title h2 {
+    color: #940203;
+    font-size: 65px;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+}
+
 
 .listaProjetos {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    -o-column-count: 3;
-    column-count: 3;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    -o-column-count: 2;
+    column-count: 2;
     
 }
 
 .card {
-    width: 100%;
     -webkit-column-break-inside: avoid;
     page-break-inside: avoid;
     break-inside: avoid-column;
