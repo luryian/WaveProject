@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import "./home.css";
 
+import CategoryFilters from "../components/CategoryFilters/CategoryFilters";
 import FilterFeedback from "../components/FilterFeedback/FilterFeedback";
 import { useNavigate} from 'react-router-dom';
 import personagem_falando from '../assets/personagem_falando.svg'
@@ -171,9 +172,7 @@ export function Home() {
                     <div className="filter-projetos">
                         <div className="left-filter">
                             <h3>Filtros</h3>
-                            <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
-                            <DropdownAplicacao setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
-                            <Slider/>
+                            <CategoryFilters setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
                         </div>
                         <div className="listaProjetos">
                             {filteredProjetos.map((elem) => (

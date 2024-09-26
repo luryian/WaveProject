@@ -25,11 +25,11 @@ const sortOptions = [
 ]
 
 const subCategories = [
-  { name: 'Design', href: '#' },
-  { name: 'Jogos', href: '#' },
-  { name: 'Audiovisual', href: '#' },
-  { name: 'Sistemas', href: '#' },
-  { name: 'Mostrar todos', href: '#' },
+  { name: 'Design', trilha: 'design' },
+  { name: 'Jogos', trilha: 'jogos' },
+  { name: 'Audiovisual', trilha: 'audiovisual' },
+  { name: 'Sistemas', trilha: 'sistemas' },
+  { name: 'Mostrar todos', trilha: null },
 ]
 
 const filters = [
@@ -63,15 +63,20 @@ const filters = [
   },
 ]
 
+interface CategoryFiltersProps {
+    setTrilhaSelecionada: (trilha: string | null) => void;
+    trilhaSelecionada: string | null;
+}
+
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function CategoryFilters() {
+export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionada }: CategoryFiltersProps) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
   return (
-    <div className="bg-white">
+    <div>
       <div>
         {/* Mobile filter dialog */}
         <Dialog open={mobileFiltersOpen} onClose={setMobileFiltersOpen} className="relative z-40 lg:hidden">
@@ -103,7 +108,9 @@ export default function CategoryFilters() {
                 <ul role="list" className="px-2 py-3 font-medium text-gray-900">
                   {subCategories.map((category) => (
                     <li key={category.name}>
-                      <a href={category.href} className="block px-2 py-3">
+                      <a 
+                        onClick={() => setTrilhaSelecionada(category.trilha)}
+                        className={`block px-2 py-3 ${trilhaSelecionada === category.trilha ? 'text-blue-600 font-bold' : ''}`}>
                         {category.name}
                       </a>
                     </li>
@@ -215,7 +222,12 @@ export default function CategoryFilters() {
                 <ul role="list" className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
                   {subCategories.map((category) => (
                     <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
+                      <a 
+                        onClick={() => setTrilhaSelecionada(category.trilha)}
+                        className={`block px-2 py-3 ${trilhaSelecionada === category.trilha ? 'text-blue-600 font-bold' : ''}`}
+                        >
+                            {category.name}     
+                        </a>
                     </li>
                   ))}
                 </ul>
