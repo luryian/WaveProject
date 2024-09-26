@@ -14,10 +14,8 @@ import jogos_mini from '../assets/jogos_mini.svg'
 import design_mini from '../assets/design_mini.svg';
 import { getProject } from "../components/Cards/cards";
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
-import DropdownAplicacao from '../components/Dropdown_Aplicacoes/Dropdown_Aplicacoes';
 import Search from "../components/Search/Search";
 import { getProjetos, logout } from "../services/firebase";
-import Footer from "../components/Footer/Footer"
 import { getAuth } from "firebase/auth"; 
 import Carousel from "../components/Carousel/Carousel"
 import { Slider } from "../components/Slider/Slider";
@@ -171,7 +169,6 @@ export function Home() {
                     </div>
                     <div className="filter-projetos">
                         <div className="left-filter">
-                            <h3>Filtros</h3>
                             <CategoryFilters setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
                         </div>
                         <div className="listaProjetos">
@@ -186,7 +183,6 @@ export function Home() {
                                         <div className="card-actions justify-between items-center">
                                             <p>{elem.Codernador}</p>
                                             <div className="badge badge-outline">{elem.trilha}</div>
-                                            
                                         </div>
                                     </div>
                                 </a>
@@ -195,7 +191,6 @@ export function Home() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     )
 

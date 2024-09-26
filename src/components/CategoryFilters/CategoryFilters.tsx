@@ -152,13 +152,13 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
                     </DisclosurePanel>
                   </Disclosure>
                 ))}
-              </form>
+              </form> 
             </DialogPanel>
           </div>
         </Dialog>
 
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+        <main className="">
+          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 gap-3">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">Filtros</h1>
 
             <div className="flex items-center">
