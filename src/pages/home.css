@@ -107,14 +107,10 @@
     margin-bottom: 3rem;
 }
 
-.left-filter {
-    display: flex;
-    flex-direction: column;
-    width: 12rem;
-}
 
 .filter-projetos {
     display: flex;
+    margin-top: 4rem;
 }
 
 .projetos-title h2 {
@@ -126,8 +122,7 @@
 
 
 .listaProjetos {
-    
-    
+ margin-left: 6rem;
 }
 
 .card {

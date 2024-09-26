@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Dialog,
   DialogBackdrop,
@@ -15,6 +15,9 @@ import {
 } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
+import './CategoryFilters.css'
+import { Project } from '../../pages/home'
+import { getProjetos } from '../../services/firebase'
 
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
@@ -66,14 +69,21 @@ const filters = [
 interface CategoryFiltersProps {
     setTrilhaSelecionada: (trilha: string | null) => void;
     trilhaSelecionada: string | null;
+    setAplicacaoSelecionada: (aplicacao: string | null) => void;
+    aplicacaoSelecionada: string | null;
 }
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionada }: CategoryFiltersProps) {
+export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionada, setAplicacaoSelecionada, aplicacaoSelecionada }: CategoryFiltersProps) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+  const [projetos, setProjetos] = useState<Project[]>([]);
+
+  useEffect(() => {
+    getProjetos(setProjetos);
+}, []);
 
   return (
     <div>
@@ -120,7 +130,7 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
                 {filters.map((section) => (
                   <Disclosure key={section.id} as="div" className="border-t border-gray-200 px-4 py-6">
                     <h3 className="-mx-2 -my-3 flow-root">
-                      <DisclosureButton className="group flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
+                      <DisclosureButton className="teste group flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
                         <span className="font-medium text-gray-900">{section.name}</span>
                         <span className="ml-6 flex items-center">
                           <PlusIcon aria-hidden="true" className="h-5 w-5 group-data-[open]:hidden" />
@@ -158,19 +168,19 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
         </Dialog>
 
         <main className="">
-          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 gap-3">
+          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pr-20 gap-3">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">Filtros</h1>
 
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
-                  <MenuButton className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                    Sort
+                  {/* <MenuButton className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
+                    Clean
                     <ChevronDownIcon
                       aria-hidden="true"
                       className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                     />
-                  </MenuButton>
+                  </MenuButton> */}
                 </div>
 
                 <MenuItems
@@ -215,16 +225,16 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
               Products
             </h2>
 
-            <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-y-10 lg:grid-cols-[3fr_1fr] lg:gap-x-8">
               {/* Filters */}
-              <form className="hidden lg:block">
+              <form className="lg:col-span-2 w-full">
                 <h3 className="sr-only">Categories</h3>
-                <ul role="list" className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
+                <ul role="list" className="space-y-1 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
                   {subCategories.map((category) => (
                     <li key={category.name}>
                       <a 
                         onClick={() => setTrilhaSelecionada(category.trilha)}
-                        className={`block px-2 py-3 ${trilhaSelecionada === category.trilha ? 'text-blue-600 font-bold' : ''}`}
+                        className={`block px-2 py-3 cursor-pointer ${trilhaSelecionada === category.trilha ? 'text-blue-600 font-bold' : ''}`}
                         >
                             {category.name}     
                         </a>
@@ -233,9 +243,9 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
                 </ul>
 
                 {filters.map((section) => (
-                  <Disclosure key={section.id} as="div" className="border-b border-gray-200 py-6">
+                  <Disclosure key={section.id} as="div" className="border-b border-gray-200 py-6 w-full">
                     <h3 className="-my-3 flow-root">
-                      <DisclosureButton className="group flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                      <DisclosureButton className="group flex items-center justify-between w-full py-2 text-sm text-gray-600 hover:text-gray-500">
                         <span className="font-medium text-gray-900">{section.name}</span>
                         <span className="ml-6 flex items-center">
                           <PlusIcon aria-hidden="true" className="h-5 w-5 group-data-[open]:hidden" />
@@ -265,9 +275,6 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
                   </Disclosure>
                 ))}
               </form>
-
-              {/* Product grid */}
-              <div className="lg:col-span-3">{/* Your content */}</div>
             </div>
           </section>
         </main>
