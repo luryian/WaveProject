@@ -170,6 +170,7 @@ export function Home() {
                     </div>
                     <div className="filter-projetos">
                         <div className="left-filter">
+                            <h3>Filtros</h3>
                             <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
                             <DropdownAplicacao setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
                             <Slider/>
