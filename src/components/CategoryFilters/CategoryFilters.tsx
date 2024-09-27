@@ -35,19 +35,7 @@ const subCategories = [
   { name: 'Mostrar todos', trilha: null },
 ]
 
-const filters = [
-  {
-    id: 'aplicacoes',
-    name: 'Aplicações',
-    options: [
-      { value: 'white', label: 'White', checked: false },
-      { value: 'beige', label: 'Beige', checked: false },
-      { value: 'blue', label: 'Blue', checked: true },
-      { value: 'brown', label: 'Brown', checked: false },
-      { value: 'green', label: 'Green', checked: false },
-      { value: 'purple', label: 'Purple', checked: false },
-    ],
-  },
+const initialFilters = [
   {
     id: 'atividade',
     name: 'Atividade',
@@ -80,10 +68,47 @@ function classNames(...classes: string[]) {
 export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionada, setAplicacaoSelecionada, aplicacaoSelecionada }: CategoryFiltersProps) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [projetos, setProjetos] = useState<Project[]>([]);
+  const [filters, setFilters] = useState(initialFilters);
+  const [aplicacoesSelecionadas, setAplicacoesSelecionadas] = useState<string[]>([]);
+
 
   useEffect(() => {
     getProjetos(setProjetos);
-}, []);
+  }, []);
+
+  useEffect(() => {
+    if (projetos && projetos.length > 0) {
+      // Filtra projetos com valores válidos em "aplicação" e remove duplicatas
+      const aplicacoesOptions = Array.from(
+        new Set(projetos
+          .filter((projeto) => projeto.aplicação) // Filtra nulos, indefinidos e strings vazias
+          .map((projeto) => projeto.aplicação)) // Mapeia para o valor da aplicação
+      ).map((aplicacao) => ({
+        value: aplicacao,
+        label: aplicacao,
+        checked: false, // Define se o item está marcado ou não
+      }));
+  
+      // Se houver opções válidas, atualiza os filtros
+      if (aplicacoesOptions.length > 0) {
+        setFilters((prevFilters: any) => [
+          {
+            id: 'aplicacoes',
+            name: 'Aplicações',
+            options: aplicacoesOptions,
+          },
+          ...prevFilters, // Mantém os filtros existentes
+        ]);
+      }
+    } else {
+      // Caso projetos seja nulo ou vazio, remove o filtro de "Aplicações"
+      setFilters((prevFilters: any) =>
+        prevFilters.filter((filter) => filter.id !== 'aplicacoes')
+      );
+    }
+  }, [projetos]);  
+  
+  
 
   return (
     <div>
@@ -259,10 +284,22 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
                           <div key={option.value} className="flex items-center">
                             <input
                               defaultValue={option.value}
-                              defaultChecked={option.checked}
+                              checked={aplicacoesSelecionadas.includes(option.value)} // Verifica se está selecionado
                               id={`filter-${section.id}-${optionIdx}`}
                               name={`${section.id}[]`}
                               type="checkbox"
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  // Se marcado, adiciona ao estado
+                                  setAplicacoesSelecionadas([...aplicacoesSelecionadas, option.value]);
+                                  setAplicacaoSelecionada(option.value); // Define a aplicação selecionada
+                                } else {
+                                  // Se desmarcado, remove do estado
+                                  setAplicacoesSelecionadas(aplicacoesSelecionadas.filter((value) => value !== option.value));
+                                  // Aqui você pode decidir o que fazer com setAplicacaoSelecionada, como limpar a seleção
+                                  setAplicacaoSelecionada(null); // Limpa a aplicação selecionada
+                                }
+                              }}
                               className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                             />
                             <label htmlFor={`filter-${section.id}-${optionIdx}`} className="ml-3 text-sm text-gray-600">

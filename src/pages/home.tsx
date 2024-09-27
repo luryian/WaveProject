@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import "./home.css";
 
 import CategoryFilters from "../components/CategoryFilters/CategoryFilters";
-import CategoryFiltersAt from "../components/CategoryFilters/CategoryFiltersAt";
-
 import FilterFeedback from "../components/FilterFeedback/FilterFeedback";
 import { useNavigate} from 'react-router-dom';
 import personagem_falando from '../assets/personagem_falando.svg'
@@ -167,7 +165,7 @@ export function Home() {
                     </div>
                     
                     <div className="filter-projetos">
-                        <CategoryFilters setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
+                        <CategoryFilters setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada}  setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
                         <div className="listaProjetos">
                             <div className="filter-feedback">
                                 <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
