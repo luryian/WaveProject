@@ -14,21 +14,17 @@ export function Audiovisual(){
     const [projetos, setProjetos] = useState<Project[]>([]) 
     var trilhaCerta = 'design'
     const projetoosss: any[] = []
-
+    const projetosFiltered = projetos.filter( (value: Project) => value.trilha.includes('design'))
     useEffect (() => {
         if (projetos.length === 0) {
             getProjetos(setProjetos)
             console.log('é pra exucuutar uma vez')
-            
+          
         }
-        if (projetos.length>1) {
-            const projetosDesign = projetos.filter(function(projetoss){ return projetoss.trilha.includes(trilhaCerta)})
-            console.log(projetosDesign)
-        }
-       
+        
     })
 
-
+    
     return(
         <div className="body-audiovisual">
          
@@ -56,7 +52,8 @@ export function Audiovisual(){
 
             <div className="listaProjetos">
 
-                    {projetoosss.map((elem) => (
+                    {
+                    projetosFiltered.map((elem) => (
                         <div className="card bg-base-100 w-96 shadow-xl" key={elem.documentId}>
                             <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
                                 <a href={`/details/${elem.documentId}`}><button className="Button_SM_details"> saiba mais</button></a>
