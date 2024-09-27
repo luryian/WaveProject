@@ -21,13 +21,13 @@ export function Slider({ setVagaDisponivel, vagaDisponivel, setAtividade, ativid
         <div className="slider-container">
             <div className="form-control">
                 <label className="label cursor-pointer">
-                    <span className="label-text">Possui vagas?</span>
+                    <span className="label-text px-2 py-3">Possui vagas?</span>
                     <input type="checkbox" checked={vagaDisponivel !== null} onChange={handleToggle} className="checkbox checkbox-sm" />
                 </label>
             </div>
             <div className="form-control">
                 <label className="label cursor-pointer">
-                    <span className="label-text">Está finalizado?</span>
+                    <span className="label-text px-2 py-3">Está finalizado?</span>
                     <input type="checkbox" checked={atividade !== null} onChange={handleToggleAtividade} className="checkbox checkbox-sm" />
                 </label>
             </div>

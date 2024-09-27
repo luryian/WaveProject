@@ -19,6 +19,13 @@ import { getProjetos, logout } from "../services/firebase";
 import { getAuth } from "firebase/auth"; 
 import Carousel from "../components/Carousel/Carousel"
 import { Slider } from "../components/Slider/Slider";
+import jogos_icon from '../assets/jogos_icon.svg'
+import design_icon from '../assets/design_icon.svg'
+import audiovisual_icon from '../assets/audiovisual_icon.svg'
+import sistemas_icon from '../assets/sistemas_icon.svg'
+
+
+
 
 export interface Project {
     [x: string]: string;
@@ -188,7 +195,7 @@ export function Home() {
                         </div>
                         <div className="listaProjetos">
                             <div className="filter-feedback">
-                                <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
+                                <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada} atividade={atividade} vagaDisponivel={vagaDisponivel}/>
                             </div>
                             <div className="cards-projetos">
                                 {filteredProjetos.map((elem) => (
@@ -196,12 +203,25 @@ export function Home() {
                                         <div className="card bg-base-100 w-96 h-38 shadow-xl" key={elem.documentId}>
                                             <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
                                             </div>
-                                            <div key={elem.documentId} className="card-body card-text">
+                                            <div key={elem.documentId} className="card-text">
                                                 <h2 className="card-title">{elem.nome}</h2>
                                             </div>
                                             <div className="card-actions justify-between items-center">
-                                                <p>{elem.Codernador}</p>
-                                                <div className="badge badge-outline">{elem.trilha}</div>
+                                                <p className="nome-coordenador">{elem.Codernador}</p>
+                                                <div>
+                                                {elem.trilha === "jogos" && (
+                                                    <img src={jogos_icon} alt="Jogos" className="icone-trilha" />
+                                                )}
+                                                {elem.trilha === "design" && (
+                                                    <img src={design_icon} alt="Design" className="icone-trilha" />
+                                                )}
+                                                {elem.trilha === "sistemas" && (
+                                                    <img src={sistemas_icon} alt="Design" className="icone-trilha" />
+                                                )}
+                                                {elem.trilha === "audiovisual" && (
+                                                    <img src={audiovisual_icon} alt="Design" className="icone-trilha" />
+                                                )}
+                                                </div>
                                             </div>
                                         </div>
                                     </a>

@@ -3,6 +3,7 @@
     align-items: start;
     gap: 5rem;
     width: 100%;
+    min-height: 50px;
 }
 
 .feedback-container h1 {

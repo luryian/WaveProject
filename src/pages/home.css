@@ -130,9 +130,19 @@
 }
 
 .cards-projetos {
-    margin-top: 5rem;
+    margin-top: -2rem;
     width: 100%;
 }
+
+.cards-projetos .card {
+    background-color: #FCF4DF;
+}
+
+.card-actions {
+    margin-top: 1.2rem;
+    font-weight: 500;
+}
+
 
 .Button_SM{
     display: flex;
