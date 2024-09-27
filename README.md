@@ -1,7 +1,7 @@
 # Expedition 🏝️🌊 
 
 ## O Expedition é um projeto desenvolvido na disciplina de protejo integrado 1. 
-##Seu objetivo é tornar mais facil a busca e visualização de projetos de pesquisas realizados no Instituto UFC Virtual
+## Seu objetivo é tornar mais facil a busca e visualização de projetos de pesquisas realizados no Instituto UFC Virtual
 
 ## Primeiros passos ✅
 
