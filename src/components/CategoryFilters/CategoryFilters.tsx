@@ -78,6 +78,12 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
 
   useEffect(() => {
     if (projetos && projetos.length > 0) {
+      // Função para capitalizar a primeira letra
+      const capitalizeFirstLetter = (str: string) => {
+        if (!str) return str; // Retorna a string se estiver vazia ou indefinida
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      };
+  
       // Filtra projetos com valores válidos em "aplicação" e remove duplicatas
       const aplicacoesOptions = Array.from(
         new Set(projetos
@@ -85,7 +91,7 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
           .map((projeto) => projeto.aplicação)) // Mapeia para o valor da aplicação
       ).map((aplicacao) => ({
         value: aplicacao,
-        label: aplicacao,
+        label: capitalizeFirstLetter(aplicacao), // Capitaliza a primeira letra
         checked: false, // Define se o item está marcado ou não
       }));
   
@@ -103,13 +109,11 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
     } else {
       // Caso projetos seja nulo ou vazio, remove o filtro de "Aplicações"
       setFilters((prevFilters: any) =>
-        prevFilters.filter((filter) => filter.id !== 'aplicacoes')
+        prevFilters.filter((filter: { id: string }) => filter.id !== 'aplicacoes')
       );
     }
   }, [projetos]);  
   
-  
-
   return (
     <div>
       <div>
