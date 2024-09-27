@@ -37,6 +37,7 @@
 ### 3. Login do Administrador 🔑
 - *Acesso:* Para acessar o painel de administração, adicione /admin à URL padrão.
 - *Credenciais:* O e-mail e a senha do administrador devem ser adicionados manualmente ao banco de dados. Se você não tiver acesso, entre em contato com um dos colaboradores para obter as informações. Se estiver usando seu próprio banco de dados, adicione as informações ao "Auth" do Firebase.
+<img src='https://github.com/luryian/WaveProject/blob/main/src/assets/login.png?raw=true'>
 
 ### 4. Edição de Informações ✏️
 - *Acesso:* Após fazer login como administrador, você será redirecionado para a tela inicial, que terá um design simplificado e permitirá a edição e adição de informações sobre os projetos.
