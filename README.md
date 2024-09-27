@@ -1,4 +1,5 @@
 # Expedition 🏝️🌊 
+<img src='https://github.com/luryian/WaveProject/blob/main/src/assets/inicialReadme.png?raw=true' > 
 
 ## O Expedition é um projeto desenvolvido na disciplina de protejo integrado 1. 
 ## Seu objetivo é tornar mais facil a busca e visualização de projetos de pesquisas realizados no Instituto UFC Virtual
@@ -33,6 +34,7 @@
   - Aplicações
   - Vagas
   - Status do projeto (ativo/inativo)
+<img src='https://github.com/luryian/WaveProject/blob/main/src/assets/filtroPesquisaReadme.png?raw=true'>
 
 ### 3. Login do Administrador 🔑
 - *Acesso:* Para acessar o painel de administração, adicione /admin à URL padrão.
@@ -48,3 +50,4 @@
   - Áreas das bolsas
   - Aplicações do projeto
 - *Atualizações:* As edições realizadas serão refletidas no banco de dados.
+<img src='https://github.com/luryian/WaveProject/blob/main/src/assets/adminProject.png?raw=true'>
