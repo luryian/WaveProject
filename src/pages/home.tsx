@@ -42,6 +42,11 @@ export function Home() {
     const [search, setSearch] = useState("");
     const [trilhaSelecionada, setTrilhaSelecionada] = useState<string | null>(null);
     const [aplicacaoSelecionada, setAplicacaoSelecionada] = useState<string | null>(null);
+    const [vagaDisponivel, setVagaDisponivel] = useState<boolean| null>(null);
+    const [atividade, setAtividade] = useState<boolean | null>(null);
+
+
+
 
 
     useEffect(() => {
@@ -58,11 +63,22 @@ export function Home() {
     ? projetos.filter((elem) => elem.aplicação === aplicacaoSelecionada)
     : projetos;
 
+    const filteredByVagas = vagaDisponivel
+    ? projetos.filter((elem) => parseInt(elem.vagas) >= 1)
+    : projetos;
+
+    const filteredByAtividade = atividade
+    ? projetos.filter((elem) => Boolean(elem.finalizado) === true)
+    : projetos;
+
     // A seguir, combinamos os dois filtros. Se ambos forem filtrados, fazemos a interseção, ou seja, projetos que passam em ambos os filtros.
     // Se um deles não estiver filtrado (ou seja, tiver todos os projetos), então ele não altera o resultado final.
     const filteredProjetos = projetos
     .filter((elem) => filteredByTrilha.includes(elem))
     .filter((elem) => filteredByAplicacao.includes(elem))
+    .filter((elem) => filteredByVagas.includes(elem))
+    .filter((elem) => filteredByAtividade.includes(elem))
+
     .filter((elem) =>
         elem.nome.toLowerCase().includes(search.toLowerCase()) ||
         elem.Codernador.toLowerCase().includes(search.toLowerCase()) 
@@ -127,6 +143,7 @@ export function Home() {
         )
     }
       
+    console.log(filteredProjetos)
 
     return(
         <div className="body">
@@ -167,7 +184,7 @@ export function Home() {
                     <div className="filter-projetos">
                         <div className="left">
                             <CategoryFilters setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada}  setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
-                            <Slider/>
+                            <Slider setVagaDisponivel={setVagaDisponivel} vagaDisponivel={vagaDisponivel} setAtividade={setAtividade} atividade={atividade}/>
                         </div>
                         <div className="listaProjetos">
                             <div className="filter-feedback">
