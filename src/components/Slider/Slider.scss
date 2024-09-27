@@ -1,4 +1,8 @@
 .slider-container {
     display: flex;
     flex-direction: column;
+    
+    .label-text {
+        font-weight: 500;
+    }
 }

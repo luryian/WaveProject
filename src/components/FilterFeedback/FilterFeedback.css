@@ -2,4 +2,13 @@
     display: flex;
     align-items: start;
     gap: 5rem;
+    width: 100%;
+    min-height: 50px;
+}
+
+.feedback-container h1 {
+    background-color: #B31717;
+    padding: .25rem .75rem;
+    color: white;
+    border-radius: 15px;
 }

@@ -4,7 +4,8 @@ import { useState } from "react";
 import { auth } from "../services/firebase";
 import { Home } from "./home";
 import logoHorizontal from '../assets/logoHorizontal.png';
-import ondaSemFundo from "../assets/onda_semfundo.png";
+
+import ondaSemFundo from '../assets/onda_semfundo.png';
 
 
 

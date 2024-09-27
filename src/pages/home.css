@@ -56,11 +56,33 @@
     margin-top: 2rem;
     width: 70%;
     margin-bottom: 6rem;
+    align-self: center;
 }
+
+.carrosselAdmin{
+    margin-top: 2rem;
+    width: 70%;
+    margin-bottom: 0rem;
+    position: relative;
+    z-index: 1;
+    align-self: center;
+}
+
+.ondaAdmin{
+    width: 100%;
+    position:relative;
+    z-index: 0;
+    bottom: 0;
+}
+
+
 
 .personagem {
     margin-bottom: 6rem;
     width: 70%;
+    position: relative;
+    z-index: 0;
+    align-self: center;
 }
 
 .trilhas {
@@ -96,6 +118,11 @@
     background-color: #92ADA4;
 }
 
+.projetos-containerAdmin{
+    padding: 0rem 15rem 0 15rem;
+    background-color: #92ADA4;
+}
+
 .navbar-container {
     display: flex;
     width: 100%;
@@ -108,38 +135,54 @@
     margin-bottom: 3rem;
 }
 
-.left-filter {
-    display: flex;
-    flex-direction: column;
-    width: 12rem;
-}
 
 .filter-projetos {
     display: flex;
+    margin-top: 4rem;
+    color: inherit;
 }
+
 
 .projetos-title h2 {
     color: #940203;
     font-size: 65px;
     font-weight: 600;
     margin-bottom: 2.5rem;
+
+    position: relative;
+    z-index: 1;
 }
 
-
 .listaProjetos {
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    -o-column-count: 2;
-    column-count: 2;
-    
+ margin-left: 6rem;
 }
 
 .card {
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid-column;
     margin-bottom: 1.5rem;
+    margin-top: 2rem;
 }
+
+.cards-projetos {
+    margin-top: -2rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    flex-wrap: wrap;
+}
+
+.cards-projetos .card {
+    background-color: #FCF4DF;
+    width: 90%;
+    height: 90%;
+    
+}
+
+.card-actions {
+    margin-top: 1.2rem;
+    font-weight: 500;
+    align-items: flex-end;
+}
+
 
 .Button_SM{
     display: flex;
@@ -156,17 +199,17 @@
      
  }
  
- .button_Editar:hover{
-     transition-duration: 0.2s;
-     scale: 1.1;
+ .button_Editar{
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: end;
  }
+
+.icone-trilha{
+    height: 1.6rem;
+    margin: 2px;
+}
  
- 
- .Button_SM_details:hover{
-      transition-duration: 0.2s;
-      scale: 1.2;
-     
- }
 
 
 /* .card {

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Carousel } from 'antd';
+import slide1 from "../../assets/slide1.png";
+import slide2 from "../../assets/slide2.svg";
+
 
 const contentStyle: React.CSSProperties = {
   height: '400px',
@@ -12,16 +15,10 @@ const contentStyle: React.CSSProperties = {
 const Carrossel: React.FC = () => (
   <Carousel autoplay>
     <div>
-      <h3 style={contentStyle}>1</h3>
+      <img src={slide1}></img>
     </div>
     <div>
-      <h3 style={contentStyle}>2</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>3</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>4</h3>
+    <img src={slide2}></img>
     </div>
   </Carousel>
 );
