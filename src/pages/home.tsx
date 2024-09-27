@@ -24,6 +24,12 @@ import jogos_icon from '../assets/jogos_icon.svg'
 import design_icon from '../assets/design_icon.svg'
 import audiovisual_icon from '../assets/audiovisual_icon.svg'
 import sistemas_icon from '../assets/sistemas_icon.svg'
+import notrilha_icon from "../assets/notrilha_icon.svg"
+import comVagas_icon from "../assets/comVagas.svg"
+import semVagas_icon from "../assets/semVagas.svg"
+import inativo_icon from "../assets/inativo.svg"
+import ativo_icon from "../assets/ativo.svg"
+import DropdownAplicacao from "../components/Dropdown_Aplicacoes/Dropdown_Aplicacoes";
 
 
 
@@ -126,44 +132,82 @@ export function Home() {
             
             <div className="body-container">
                 
-                <div className="projetos-containerAdmin">
+            <div className="projetos-containerAdmin">
                     <div className="projetos-title">
                         <h2>Projetos de pesquisa</h2>
                     </div>
                     <div className="navbar-container">
                         <Search search={search} setSearch={setSearch}/>
                     </div>
-                    <div className="filter-feedback">
-                        <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
-                    </div>
+                    
                     <div className="filter-projetos">
-                        <div className="left-filter">
-                            <h3>Filtros</h3>
-                            <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
-                            <DropdownAplicacao setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
-                            <Slider/>
+                        <div className="left">
+                            <CategoryFilters setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada}  setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
+                            <Slider setVagaDisponivel={setVagaDisponivel} vagaDisponivel={vagaDisponivel} setAtividade={setAtividade} atividade={atividade}/>
                         </div>
                         <div className="listaProjetos">
-                            {filteredProjetos.map((elem) => (
-                                <a href={`/details/${elem.documentId}`}>
-                                    <div className="card bg-base-100 w-96 shadow-xl" key={elem.documentId}>
-                                    <a className="button_Editar" href={`/editarProjeto/${elem.documentId}`}>
-                                    <img src={edit}></img>
+                            <div className="filter-feedback">
+                                <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada} atividade={atividade} vagaDisponivel={vagaDisponivel}/>
+                            </div>
+                            <div className="cards-projetos">
+                                {filteredProjetos.map((elem) => (
+                                    <a href={`/details/${elem.documentId}`}>
+                                        <div className="card bg-base-100 w-96 h-38 shadow-xl" key={elem.documentId}>
+                                            <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
+                                            </div>
+                                            <a className="button_Editar" href={`/editarProjeto/${elem.documentId}`}>
+                                                <img src={edit}></img>
+                                            </a>
+                                            <div key={elem.documentId} className="card-text">
+                                                <h2 className="card-title">{elem.nome}</h2>
+                                            </div>
+                                            <div className="card-actions justify-between items-center;">
+                                                <p className="nome-coordenador">{elem.Codernador}</p>
+                                                
+                                                <div className="card-actions">
+                                                    <div>
+                                                    {elem.trilha === "jogos" && (
+                                                        <img src={jogos_icon} alt="Jogos" className="icone-trilha" />
+                                                    )}
+                                                    {elem.trilha === "design" && (
+                                                        <img src={design_icon} alt="Design" className="icone-trilha" />
+                                                    )}
+                                                    {elem.trilha === "sistemas" && (
+                                                        <img src={sistemas_icon} alt="Sistemas" className="icone-trilha" />
+                                                    )}
+                                                    {elem.trilha === "audiovisual" && (
+                                                        <img src={audiovisual_icon} alt="Audiovisual" className="icone-trilha" />
+                                                    )}
+                                                    {elem.trilha === "" && (
+                                                        <img src={notrilha_icon} alt="Sem trilha" className="icone-trilha" />
+                                                    )}
+                                                    </div>
+
+                                                    <div>
+                                                    {parseInt(elem.vagas) >= 1 && (
+                                                        <img src={comVagas_icon} className="icone-trilha" />
+                                                    )}
+                                                    {parseInt(elem.vagas) < 1 && (
+                                                        <img src={semVagas_icon} alt="Jogos" className="icone-trilha" />
+                                                    )}
+                                                    </div>
+
+                                                    <div>
+                                                    {Boolean(elem.finalizado) === true && (
+                                                        <img src={inativo_icon} className="icone-trilha" />
+                                                    )}
+                                                    {Boolean(elem.finalizado) === false && (
+                                                        <img src={ativo_icon} alt="Jogos" className="icone-trilha" />
+                                                    )}
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
                                     </a>
-                                        <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
-                                        
-                                        </div>
-                                        <div key={elem.documentId} className="card-body card-text">
-                                            <h2 className="card-title">{elem.nome}</h2>
-                                        </div>
-                                        <div className="card-actions justify-between items-center">
-                                            <p>{elem.Codernador}</p>
-                                            <div className="badge badge-outline">{elem.trilha}</div>
-                                            
-                                        </div>
-                                    </div>
-                                </a>
-                            ))}
+                                ))}
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -228,22 +272,47 @@ export function Home() {
                                             <div key={elem.documentId} className="card-text">
                                                 <h2 className="card-title">{elem.nome}</h2>
                                             </div>
-                                            <div className="card-actions justify-between items-center">
+                                            <div className="card-actions justify-between items-center;">
                                                 <p className="nome-coordenador">{elem.Codernador}</p>
-                                                <div>
-                                                {elem.trilha === "jogos" && (
-                                                    <img src={jogos_icon} alt="Jogos" className="icone-trilha" />
-                                                )}
-                                                {elem.trilha === "design" && (
-                                                    <img src={design_icon} alt="Design" className="icone-trilha" />
-                                                )}
-                                                {elem.trilha === "sistemas" && (
-                                                    <img src={sistemas_icon} alt="Design" className="icone-trilha" />
-                                                )}
-                                                {elem.trilha === "audiovisual" && (
-                                                    <img src={audiovisual_icon} alt="Design" className="icone-trilha" />
-                                                )}
+                                                
+                                                <div className="card-actions">
+                                                    <div>
+                                                    {elem.trilha === "jogos" && (
+                                                        <img src={jogos_icon} alt="Jogos" className="icone-trilha" />
+                                                    )}
+                                                    {elem.trilha === "design" && (
+                                                        <img src={design_icon} alt="Design" className="icone-trilha" />
+                                                    )}
+                                                    {elem.trilha === "sistemas" && (
+                                                        <img src={sistemas_icon} alt="Sistemas" className="icone-trilha" />
+                                                    )}
+                                                    {elem.trilha === "audiovisual" && (
+                                                        <img src={audiovisual_icon} alt="Audiovisual" className="icone-trilha" />
+                                                    )}
+                                                    {elem.trilha === "" && (
+                                                        <img src={notrilha_icon} alt="Sem trilha" className="icone-trilha" />
+                                                    )}
+                                                    </div>
+
+                                                    <div>
+                                                    {parseInt(elem.vagas) >= 1 && (
+                                                        <img src={comVagas_icon} className="icone-trilha" />
+                                                    )}
+                                                    {parseInt(elem.vagas) < 1 && (
+                                                        <img src={semVagas_icon} alt="Jogos" className="icone-trilha" />
+                                                    )}
+                                                    </div>
+
+                                                    <div>
+                                                    {Boolean(elem.finalizado) === true && (
+                                                        <img src={inativo_icon} className="icone-trilha" />
+                                                    )}
+                                                    {Boolean(elem.finalizado) === false && (
+                                                        <img src={ativo_icon} alt="Jogos" className="icone-trilha" />
+                                                    )}
+                                                    </div>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                     </a>

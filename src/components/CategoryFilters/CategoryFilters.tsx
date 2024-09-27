@@ -133,7 +133,7 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
                     <li key={category.name}>
                       <a 
                         onClick={() => setTrilhaSelecionada(category.trilha)}
-                        className={`block px-2 py-3 ${trilhaSelecionada === category.trilha ? 'text-blue-600 font-bold' : ''}`}>
+                        className={`block px-2 py-3 ${trilhaSelecionada === category.trilha ? 'text-black-600 font-bold' : ''}`}>
                         {category.name}
                       </a>
                     </li>
@@ -246,7 +246,7 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
                     <li key={category.name}>
                       <a 
                         onClick={() => setTrilhaSelecionada(category.trilha)}
-                        className={`block px-2 py-3 cursor-pointer ${trilhaSelecionada === category.trilha ? 'text-blue-600 font-bold' : ''}`}
+                        className={`block px-2 py-3 cursor-pointer ${trilhaSelecionada === category.trilha ? 'text-black-600 font-bold' : ''}`}
                         >
                             {category.name}     
                         </a>
@@ -272,7 +272,7 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
                           <li key={option.label}>
                             <a 
                               onClick={() => setAplicacaoSelecionada(option.value)}
-                              className={`block px-2 py-3 cursor-pointer ${aplicacaoSelecionada === option.value ? 'text-blue-600 font-bold' : ''}`}
+                              className={`block px-2 py-3 cursor-pointer ${aplicacaoSelecionada === option.value ? 'text-black-600 font-bold' : ''}`}
                               >
                                   {option.label}     
                               </a>
@@ -281,7 +281,7 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
                           <li> 
                             <a  
                               onClick={() => setAplicacaoSelecionada(null)}
-                              className={`block px-2 py-3 cursor-pointer ${aplicacaoSelecionada === null ? 'text-blue-600 font-bold' : ''}`}
+                              className={`block px-2 py-3 cursor-pointer ${aplicacaoSelecionada === null ? 'text-black-600 font-bold' : ''}`}
                             > 
                               Mostrar todos
                             </a>
