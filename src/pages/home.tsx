@@ -109,6 +109,7 @@ export function Home() {
 
     if (user){
         console.log(user)
+
         return(
             <div className="body">
             <div className="header">

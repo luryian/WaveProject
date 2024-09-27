@@ -200,6 +200,8 @@
  
  .button_Editar{
     margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: end;
  }
 
 .icone-trilha{
