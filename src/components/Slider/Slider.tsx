@@ -27,7 +27,7 @@ export function Slider({ setVagaDisponivel, vagaDisponivel, setAtividade, ativid
             </div>
             <div className="form-control">
                 <label className="label cursor-pointer">
-                    <span className="label-text">Está ativo?</span>
+                    <span className="label-text">Está finalizado?</span>
                     <input type="checkbox" checked={atividade !== null} onChange={handleToggleAtividade} className="checkbox checkbox-sm" />
                 </label>
             </div>

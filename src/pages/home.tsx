@@ -193,7 +193,7 @@ export function Home() {
                             <div className="cards-projetos">
                                 {filteredProjetos.map((elem) => (
                                     <a href={`/details/${elem.documentId}`}>
-                                        <div className="card bg-base-100 w-96 shadow-xl" key={elem.documentId}>
+                                        <div className="card bg-base-100 w-96 h-38 shadow-xl" key={elem.documentId}>
                                             <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
                                             </div>
                                             <div key={elem.documentId} className="card-body card-text">
