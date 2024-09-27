@@ -63,7 +63,7 @@ export function Home() {
     const [vagaDisponivel, setVagaDisponivel] = useState<boolean| null>(null);
     const [atividade, setAtividade] = useState<boolean | null>(null);
 
-
+    
 
     useEffect(() => {
         getProjetos(setProjetos)
