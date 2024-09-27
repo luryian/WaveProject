@@ -34,3 +34,42 @@
     padding-bottom: 10%;
 
 }
+
+.navbar-container-trilhas{
+
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: start;
+    margin-bottom: .5rem;
+    border: 1px solid;
+   
+}
+
+.listaProjetos-trilhas{
+        -webkit-column-count: 4;
+        -moz-column-count: 2;
+        -o-column-count: 2;
+        column-count: 2;  
+
+}
+
+.filterList-trilhas{
+
+    height: 100vw;
+    max-width:50px;
+    border: 1px solid;
+
+}
+
+.body-container-trilhas{
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-end;
+    border: 1px solid;
+
+}
