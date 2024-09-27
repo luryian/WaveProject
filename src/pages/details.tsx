@@ -23,6 +23,16 @@ import { getProject } from "../components/Cards/cards";
 import { Project } from "./home";
 import { Sistemas } from "./trilhas/sistemas";
 
+import jogos_icon from '../assets/jogos_icon.svg'
+import design_icon from '../assets/design_icon.svg'
+import audiovisual_icon from '../assets/audiovisual_icon.svg'
+import sistemas_icon from '../assets/sistemas_icon.svg'
+import notrilha_icon from "../assets/notrilha_icon.svg"
+import comVagas_icon from "../assets/comVagas.svg"
+import semVagas_icon from "../assets/semVagas.svg"
+import inativo_icon from "../assets/inativo.svg"
+import ativo_icon from "../assets/ativo.svg"
+
 export function Details() {
     const { projectId } = useParams()
 
@@ -61,15 +71,47 @@ useEffect(() => {
                </div>
            </div>
           
-      <main>
+      <main className="maindetails">
        <div className="info_top-details">
            <div className="mascote-details">
                <img src={albaProjeto} alt="" />
            </div>
            <div className="filter">
-           <span><img src= {sistemas} alt="moedaAll" className="moedas-details" /><p className="tags-details">{project?.trilha}</p> </span>
-           <span> <img src={iconAtivo} alt="iconAtivo" className="moedas-details" /> <p className="tags-details">{project?.Status}</p></span>
-           <span> <img src={iconBolsaInd} alt="icon-bolsal-indisponivel" /><p className="tags-details" >{project?.vaga}</p></span>
+           <span> <div>
+                    {project?.trilha === "jogos" && (
+                        <span className="tags-details"><img src={jogos_icon} alt="Jogos" className="icone-trilha" /> {project?.trilha} </span>
+                    )}
+                    {project?.trilha === "design" && (
+                        <span className="tags-details"><img src={design_icon} alt="Design" className="icone-trilha" /> {project?.trilha} </span>
+                    )}
+                    {project?.trilha === "sistemas" && (
+                        <span className="tags-details"><img src={sistemas_icon} alt="Sistemas" className="icone-trilha" /> {project?.trilha} </span>
+                    )}
+                    {project?.trilha === "audiovisual" && (
+                        <span className="tags-details"><img src={audiovisual_icon} alt="Audiovisual" className="icone-trilha" /> {project?.trilha} </span>
+                    )}
+                    {project?.trilha === "" && (
+                        <span className="tags-details"><img src={notrilha_icon} alt="Sem trilha" className="icone-trilha" /> Sem trilha definida </span>
+                    )}
+                    </div>
+           </span>
+           <span> <div>
+                {parseInt(project?.vagas) >= 1 && (
+                    <span className="tags-details"> <img src={comVagas_icon} className="icone-trilha"/> Vagas abertas: {project?.vagas} </span>
+                )}
+                {parseInt(project?.vagas) < 1 && (
+                    <span className="tags-details"> <img src={semVagas_icon} alt="Jogos" className="icone-trilha" /> Não possui vagas abertas </span>
+                )}
+                </div></span>
+
+           <span> <div>
+                {Boolean(project?.finalizado) === true && (
+                    <span className="tags-details"><img src={inativo_icon} className="icone-trilha" /> Projeto Inativo</span>
+                )}
+                {Boolean(project?.finalizado) === false && (
+                    <span className="tags-details"><img src={ativo_icon} alt="Jogos" className="icone-trilha" /> Projeto Ativo</span>
+                )}
+                </div></span>
 
            </div>
        </div>
@@ -90,7 +132,6 @@ useEffect(() => {
      
       </main>
 
-       <Footer/>
    </div>
     )
 

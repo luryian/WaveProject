@@ -3,15 +3,13 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-   background-color: #FCF4DF;
-   
-    
+    background-color: #FCF4DF;
 }
 
-main{
-
+.maindetails{
     padding-top: 5%;
     padding: 3%;
+    height: 100vh;
 }
 
 span{
