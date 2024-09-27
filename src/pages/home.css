@@ -134,14 +134,10 @@
     margin-bottom: 3rem;
 }
 
-.left-filter {
-    display: flex;
-    flex-direction: column;
-    width: 12rem;
-}
 
 .filter-projetos {
     display: flex;
+    margin-top: 4rem;
 }
 
 .projetos-title h2 {
@@ -154,21 +150,29 @@
     z-index: 1;
 }
 
-
 .listaProjetos {
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    -o-column-count: 2;
-    column-count: 2;
-    
+ margin-left: 6rem;
 }
 
 .card {
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid-column;
     margin-bottom: 1.5rem;
+    margin-top: 2rem;
 }
+
+.cards-projetos {
+    margin-top: -2rem;
+    width: 100%;
+}
+
+.cards-projetos .card {
+    background-color: #FCF4DF;
+}
+
+.card-actions {
+    margin-top: 1.2rem;
+    font-weight: 500;
+}
+
 
 .Button_SM{
     display: flex;

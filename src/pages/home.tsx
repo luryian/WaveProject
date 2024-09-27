@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import "./home.css";
 
+import CategoryFilters from "../components/CategoryFilters/CategoryFilters";
 import FilterFeedback from "../components/FilterFeedback/FilterFeedback";
 import { useNavigate} from 'react-router-dom';
 import personagem_falando from '../assets/personagem_falando.svg'
@@ -12,15 +13,20 @@ import jogos_mini from '../assets/jogos_mini.svg'
 import design_mini from '../assets/design_mini.svg';
 import { getProject } from "../components/Cards/cards";
 import DropdownFilter from '../components/DropdownFilter/DropdownFilter';
-import DropdownAplicacao from '../components/Dropdown_Aplicacoes/Dropdown_Aplicacoes';
 import Search from "../components/Search/Search";
 import { getProjetos, logout } from "../services/firebase";
-import Footer from "../components/Footer/Footer"
 import { getAuth } from "firebase/auth"; 
 import Carousel from "../components/Carousel/Carousel"
 import { Slider } from "../components/Slider/Slider";
 import ondaSemFundo from "../assets/onda_semfundo.svg"
 import edit from "../assets/Edit.svg"
+import jogos_icon from '../assets/jogos_icon.svg'
+import design_icon from '../assets/design_icon.svg'
+import audiovisual_icon from '../assets/audiovisual_icon.svg'
+import sistemas_icon from '../assets/sistemas_icon.svg'
+
+
+
 
 export interface Project {
     [x: string]: string;
@@ -47,6 +53,11 @@ export function Home() {
     const [search, setSearch] = useState("");
     const [trilhaSelecionada, setTrilhaSelecionada] = useState<string | null>(null);
     const [aplicacaoSelecionada, setAplicacaoSelecionada] = useState<string | null>(null);
+    const [vagaDisponivel, setVagaDisponivel] = useState<boolean| null>(null);
+    const [atividade, setAtividade] = useState<boolean | null>(null);
+
+
+
 
 
     useEffect(() => {
@@ -63,11 +74,22 @@ export function Home() {
     ? projetos.filter((elem) => elem.aplicação === aplicacaoSelecionada)
     : projetos;
 
+    const filteredByVagas = vagaDisponivel
+    ? projetos.filter((elem) => parseInt(elem.vagas) >= 1)
+    : projetos;
+
+    const filteredByAtividade = atividade
+    ? projetos.filter((elem) => Boolean(elem.finalizado) === true)
+    : projetos;
+
     // A seguir, combinamos os dois filtros. Se ambos forem filtrados, fazemos a interseção, ou seja, projetos que passam em ambos os filtros.
     // Se um deles não estiver filtrado (ou seja, tiver todos os projetos), então ele não altera o resultado final.
     const filteredProjetos = projetos
     .filter((elem) => filteredByTrilha.includes(elem))
     .filter((elem) => filteredByAplicacao.includes(elem))
+    .filter((elem) => filteredByVagas.includes(elem))
+    .filter((elem) => filteredByAtividade.includes(elem))
+
     .filter((elem) =>
         elem.nome.toLowerCase().includes(search.toLowerCase()) ||
         elem.Codernador.toLowerCase().includes(search.toLowerCase()) 
@@ -146,11 +168,11 @@ export function Home() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
         )
     }
       
+    console.log(filteredProjetos)
 
     return(
         <div className="body">
@@ -187,38 +209,50 @@ export function Home() {
                     <div className="navbar-container">
                         <Search search={search} setSearch={setSearch}/>
                     </div>
-                    <div className="filter-feedback">
-                        <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
-                    </div>
+                    
                     <div className="filter-projetos">
-                        <div className="left-filter">
-                            <h3>Filtros</h3>
-                            <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
-                            <DropdownAplicacao setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
-                            <Slider/>
+                        <div className="left">
+                            <CategoryFilters setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada}  setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
+                            <Slider setVagaDisponivel={setVagaDisponivel} vagaDisponivel={vagaDisponivel} setAtividade={setAtividade} atividade={atividade}/>
                         </div>
                         <div className="listaProjetos">
-                            {filteredProjetos.map((elem) => (
-                                <a href={`/details/${elem.documentId}`}>
-                                    <div className="card bg-base-100 w-96 shadow-xl" key={elem.documentId}>
-                                        <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
+                            <div className="filter-feedback">
+                                <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada} atividade={atividade} vagaDisponivel={vagaDisponivel}/>
+                            </div>
+                            <div className="cards-projetos">
+                                {filteredProjetos.map((elem) => (
+                                    <a href={`/details/${elem.documentId}`}>
+                                        <div className="card bg-base-100 w-96 h-38 shadow-xl" key={elem.documentId}>
+                                            <div className="Button_SM" onClick={() => getProject(elem.documentId)}> 
+                                            </div>
+                                            <div key={elem.documentId} className="card-text">
+                                                <h2 className="card-title">{elem.nome}</h2>
+                                            </div>
+                                            <div className="card-actions justify-between items-center">
+                                                <p className="nome-coordenador">{elem.Codernador}</p>
+                                                <div>
+                                                {elem.trilha === "jogos" && (
+                                                    <img src={jogos_icon} alt="Jogos" className="icone-trilha" />
+                                                )}
+                                                {elem.trilha === "design" && (
+                                                    <img src={design_icon} alt="Design" className="icone-trilha" />
+                                                )}
+                                                {elem.trilha === "sistemas" && (
+                                                    <img src={sistemas_icon} alt="Design" className="icone-trilha" />
+                                                )}
+                                                {elem.trilha === "audiovisual" && (
+                                                    <img src={audiovisual_icon} alt="Design" className="icone-trilha" />
+                                                )}
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div key={elem.documentId} className="card-body card-text">
-                                            <h2 className="card-title">{elem.nome}</h2>
-                                        </div>
-                                        <div className="card-actions justify-between items-center">
-                                            <p>{elem.Codernador}</p>
-                                            <div className="badge badge-outline">{elem.trilha}</div>
-                                            
-                                        </div>
-                                    </div>
-                                </a>
-                            ))}
+                                    </a>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     )
 
