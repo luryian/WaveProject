@@ -33,6 +33,7 @@ import DropdownAplicacao from "../components/Dropdown_Aplicacoes/Dropdown_Aplica
 
 
 
+import { getTrilha } from "../components/ilhasFilter/ilhasFilter";
 
 export interface Project {
     [x: string]: string;
@@ -61,8 +62,6 @@ export function Home() {
     const [aplicacaoSelecionada, setAplicacaoSelecionada] = useState<string | null>(null);
     const [vagaDisponivel, setVagaDisponivel] = useState<boolean| null>(null);
     const [atividade, setAtividade] = useState<boolean | null>(null);
-
-
 
 
 
@@ -107,8 +106,8 @@ export function Home() {
         navigate(path); // Caminho para onde quer redirecionar
     };
 
+    console.log(projetos)
     if (user){
-        console.log(user)
 
         return(
             <div className="body">
@@ -241,10 +240,10 @@ export function Home() {
                 <div className="trilhas">
                     <h2 className="-">Trilhas</h2>
                     <div className="trilhas-container">
-                        <img onClick={() => handleImageClick('/design')} src={design_mini} alt="trilha-design" className="img-trilha"/>
-                        <img onClick={() => handleImageClick('/audiovisual')} src={audiovisualapp} alt="trilha-audiovisual" />
-                        <img onClick={() => handleImageClick('/sistemas')} src={sistemas_mini} alt="trilha-programacao" />
-                        <img onClick={() => handleImageClick('/jogos')} src={jogos_mini} alt="trilha-jogos" />
+                        <a onClick={() => handleImageClick('/design')}><img src={design_mini} alt="trilha-design" className="img-trilha"/></a> 
+                        <a onClick={() =>  handleImageClick('/audiovisual')}> <img src={audiovisualapp} alt="trilha-audiovisual" /></a>
+                        <a onClick={()=> handleImageClick('/sistemas')}> <img  src={sistemas_mini} alt="trilha-programacao" /> </a>
+                        <a onClick={() =>  handleImageClick('/jogos')}> <img  src={jogos_mini} alt="trilha-jogos" /></a>
                     </div>
                 </div>
                 <div className="projetos-container">
