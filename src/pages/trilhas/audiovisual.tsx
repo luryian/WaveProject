@@ -10,6 +10,9 @@ import { getProject } from "../../components/Cards/cards";
 import DropdownFilter from '../../components/DropdownFilter/DropdownFilter';
 import { Slider } from "../../components/Slider/Slider";
 import FilterFeedback from "../../components/FilterFeedback/FilterFeedback";
+import { getAuth } from "firebase/auth"; 
+
+import { useNavigate} from 'react-router-dom';
 
 import edit from "../../assets/Edit.svg"
 import jogos_icon from '../../assets/jogos_icon.svg'
@@ -22,10 +25,16 @@ import semVagas_icon from "../../assets/semVagas.svg"
 import inativo_icon from "../../assets/inativo.svg"
 import ativo_icon from "../../assets/ativo.svg"
 
+
+import audiovisualapp from '../../assets/audiouvisualpp.svg'
+import sistemas_mini from '../../assets/sistemas_mini.svg'
+import jogos_mini from '../../assets/jogos_mini.svg'
+import design_mini from '../../assets/design_mini.svg';
+
 export function Audiovisual(){  
 
     
-    
+    const navigate = useNavigate();
     const [search, setSearch] = useState("");
     const [projetos, setProjetos] = useState<Project[]>([]) 
     var trilhaCerta = 'design'
@@ -34,14 +43,55 @@ export function Audiovisual(){
     const [aplicacaoSelecionada, setAplicacaoSelecionada] = useState<string | null>(null);
     const [atividade, setAtividade] = useState<boolean | null>(null);
     const [vagaDisponivel, setVagaDisponivel] = useState<boolean| null>(null);
+  
+
     useEffect (() => {
         if (projetos.length === 0) {
             getProjetos(setProjetos)
             console.log('é pra exucuutar uma vez')
           
         }
-        
-    })   
+
+         
+    })
+
+    // Primeiro, filtramos pela trilha se a trilha estiver selecionada, senão retornamos todos os projetos.
+    const filteredByTrilha = trilhaSelecionada
+    ? projetos.filter((elem) => elem.trilha === trilhaSelecionada)
+    : projetos;
+
+    // Depois, filtramos pela aplicação se a aplicação estiver selecionada, senão retornamos todos os projetos.
+    const filteredByAplicacao = aplicacaoSelecionada
+    ? projetos.filter((elem) => elem.aplicação === aplicacaoSelecionada)
+    : projetos;
+
+    const filteredByVagas = vagaDisponivel
+    ? projetos.filter((elem) => parseInt(elem.vagas) >= 1)
+    : projetos;
+
+    const filteredByAtividade = atividade
+    ? projetos.filter((elem) => Boolean(elem.finalizado) === true)
+    : projetos;
+
+    // A seguir, combinamos os dois filtros. Se ambos forem filtrados, fazemos a interseção, ou seja, projetos que passam em ambos os filtros.
+    // Se um deles não estiver filtrado (ou seja, tiver todos os projetos), então ele não altera o resultado final.
+    const filteredProjetos = projetos
+    .filter((elem) => filteredByTrilha.includes(elem))
+    .filter((elem) => filteredByAplicacao.includes(elem))
+    .filter((elem) => filteredByVagas.includes(elem))
+    .filter((elem) => filteredByAtividade.includes(elem))
+
+    .filter((elem) =>
+        elem.nome.toLowerCase().includes(search.toLowerCase()) ||
+        elem.Codernador.toLowerCase().includes(search.toLowerCase()) 
+    );
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    const handleImageClick = (path: string) => {
+        navigate(path); // Caminho para onde quer redirecionar
+    };
+    handleImageClick('/design')
     return(
                             <div className="body-audiovisual">
                             
