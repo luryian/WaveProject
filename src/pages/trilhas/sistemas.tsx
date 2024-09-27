@@ -12,6 +12,7 @@ import FilterFeedback from "../../components/FilterFeedback/FilterFeedback";
 import { getProject } from "../../components/Cards/cards";
 import { getProjetos, logout } from "../../services/firebase";
 
+import CategoryFilters from "../../components/CategoryFilters/CategoryFilters";
 import edit from "../../assets/Edit.svg"
 import jogos_icon from '../../assets/jogos_icon.svg'
 import design_icon from '../../assets/design_icon.svg'
@@ -64,9 +65,7 @@ export function Sistemas(){
            
             <div>
                 <h1 className="title-audivisual"> Projetos de Pesquisa</h1>
-                <div className="navbar-container">
-                    <Search search={search} setSearch={setSearch}/>
-                </div> 
+                
             </div>
            
             <div className="body">
@@ -82,13 +81,15 @@ export function Sistemas(){
                                
                             </div>
                             <div className="filter-projetos">
+                            <div className="left">
+                            <CategoryFilters setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada}  setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
+                            <Slider setVagaDisponivel={setVagaDisponivel} vagaDisponivel={vagaDisponivel} setAtividade={setAtividade} atividade={atividade}/>
+                        </div>
                                 <div className="left-filter">
-                                    <h3>Filtros</h3>
-                                    <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
                                    
                                 </div>
                                 <div className="listaProjetos">
-                            <div className="filter-feedback">
+                                <div className="filter-feedback">
                                 <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada} atividade={atividade} vagaDisponivel={vagaDisponivel}/>
                             </div>
                             <div className="cards-projetos">

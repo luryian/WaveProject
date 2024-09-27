@@ -12,6 +12,8 @@ import { Slider } from "../../components/Slider/Slider";
 import FilterFeedback from "../../components/FilterFeedback/FilterFeedback";
 import { getAuth } from "firebase/auth"; 
 
+
+import CategoryFilters from "../../components/CategoryFilters/CategoryFilters";
 import { useNavigate} from 'react-router-dom';
 
 import edit from "../../assets/Edit.svg"
@@ -91,7 +93,7 @@ export function Audiovisual(){
     const handleImageClick = (path: string) => {
         navigate(path); // Caminho para onde quer redirecionar
     };
-    handleImageClick('/design')
+
     return(
                             <div className="body-audiovisual">
                             
@@ -127,13 +129,15 @@ export function Audiovisual(){
                                
                             </div>
                             <div className="filter-projetos">
+                            <div className="left">
+                            <CategoryFilters setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada}  setAplicacaoSelecionada={setAplicacaoSelecionada} aplicacaoSelecionada={aplicacaoSelecionada}/>
+                            <Slider setVagaDisponivel={setVagaDisponivel} vagaDisponivel={vagaDisponivel} setAtividade={setAtividade} atividade={atividade}/>
+                        </div>
                                 <div className="left-filter">
-                                    <h3>Filtros</h3>
-                                    <DropdownFilter setTrilhaSelecionada={setTrilhaSelecionada} trilhaSelecionada={trilhaSelecionada} />
                                    
                                 </div>
                                 <div className="listaProjetos">
-                            <div className="filter-feedback">
+                                <div className="filter-feedback">
                                 <FilterFeedback trilhaSelecionada={trilhaSelecionada} aplicacaoSelecionada={aplicacaoSelecionada} atividade={atividade} vagaDisponivel={vagaDisponivel}/>
                             </div>
                             <div className="cards-projetos">
