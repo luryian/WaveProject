@@ -8,12 +8,12 @@
 1. *Clone do Projeto*  
    Execute o seguinte comando para clonar o projeto:
    ```bash
-   git clone https://github.com/luryian/WaveProject.git```
+   git clone https://github.com/luryian/WaveProject.git
    
 
 2. *Instalação das Dependências*  
    Navegue até o diretório do projeto e instale as dependências:
-   bash
+   ```bash
    npm install
    
 
