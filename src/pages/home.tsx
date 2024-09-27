@@ -78,7 +78,6 @@ export function Home() {
     };
 
     if (user){
-        console.log(user)
         return(
             <div className="body">
             <div className="header">
@@ -131,7 +130,6 @@ export function Home() {
         </div>
         )
     }
-      
 
     return(
         <div className="body">
@@ -155,10 +153,10 @@ export function Home() {
                 <div className="trilhas">
                     <h2 className="-">Trilhas</h2>
                     <div className="trilhas-container">
-                        <a onClick={() => handleImageClick('/design')}><img onClick={() => getTrilha('design')} src={design_mini} alt="trilha-design" className="img-trilha"/></a> 
-                        <a onClick={() =>  handleImageClick('/audiovisual')}> <img onClick={() => getTrilha('audivisual')} src={audiovisualapp} alt="trilha-audiovisual" /></a>
-                        <a onClick={()=> handleImageClick('/sistemas')}> <img onClick={() => getTrilha('sistemas') } src={sistemas_mini} alt="trilha-programacao" /> </a>
-                        <a onClick={() =>  handleImageClick('/jogos')}> <img onClick={() => getTrilha('jogos')} src={jogos_mini} alt="trilha-jogos" /></a>
+                        <a onClick={() => handleImageClick('/design')}><img src={design_mini} alt="trilha-design" className="img-trilha"/></a> 
+                        <a onClick={() =>  handleImageClick('/audiovisual')}> <img src={audiovisualapp} alt="trilha-audiovisual" /></a>
+                        <a onClick={()=> handleImageClick('/sistemas')}> <img  src={sistemas_mini} alt="trilha-programacao" /> </a>
+                        <a onClick={() =>  handleImageClick('/jogos')}> <img  src={jogos_mini} alt="trilha-jogos" /></a>
                     </div>
                 </div>
                 <div className="projetos-container">
