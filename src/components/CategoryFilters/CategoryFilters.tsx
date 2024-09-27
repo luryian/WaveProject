@@ -9,12 +9,11 @@ import {
   DisclosureButton,
   DisclosurePanel,
   Menu,
-  MenuButton,
   MenuItem,
   MenuItems,
 } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
+import { FunnelIcon, MinusIcon, PlusIcon } from '@heroicons/react/20/solid'
 import './CategoryFilters.css'
 import { Project } from '../../pages/home'
 import { getProjetos } from '../../services/firebase'
@@ -234,14 +233,14 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
             </div>
           </div>
 
-          <section aria-labelledby="products-heading" className="pb-24 pt-6">
+          <section aria-labelledby="products-heading" className="pb-8 pt-6 ">
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>
 
             <div className="grid grid-cols-1 gap-y-10 lg:grid-cols-[3fr_1fr] lg:gap-x-8">
               {/* Filters */}
-              <form className="lg:col-span-2 w-full">
+              <form className="lg:col-span-2 w-full ">
                 <ul role="list" className="space-y-1 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
                   {subCategories.map((category) => (
                     <li key={category.name}>
