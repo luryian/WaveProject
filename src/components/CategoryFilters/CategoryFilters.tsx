@@ -35,23 +35,8 @@ const subCategories = [
   { name: 'Mostrar todos', trilha: null },
 ]
 
-const initialFilters = [
-  {
-    id: 'atividade',
-    name: 'Atividade',
-    options: [
-      { value: 'ativo', label: 'Ativo', checked: false },
-      { value: 'inativo', label: 'Inativo', checked: false }
-    ],
-  },
-  {
-    id: 'vagas',
-    name: 'Vagas',
-    options: [
-      { value: 'disponivel', label: 'Disponível', checked: false },
-      { value: 'indisponivel', label: 'Indisponível', checked: false }
-    ],
-  },
+const initialFilters: any[] | (() => any[]) = [
+  
 ]
 
 interface CategoryFiltersProps {
@@ -69,7 +54,6 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [projetos, setProjetos] = useState<Project[]>([]);
   const [filters, setFilters] = useState(initialFilters);
-  const [aplicacoesSelecionadas, setAplicacoesSelecionadas] = useState<string[]>([]);
 
 
   useEffect(() => {
@@ -112,8 +96,9 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
         prevFilters.filter((filter: { id: string }) => filter.id !== 'aplicacoes')
       );
     }
-  }, [projetos]);  
+  }, [projetos]); 
   
+  console.log(aplicacaoSelecionada)
   return (
     <div>
       <div>
@@ -257,7 +242,6 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
             <div className="grid grid-cols-1 gap-y-10 lg:grid-cols-[3fr_1fr] lg:gap-x-8">
               {/* Filters */}
               <form className="lg:col-span-2 w-full">
-                <h3 className="sr-only">Categories</h3>
                 <ul role="list" className="space-y-1 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
                   {subCategories.map((category) => (
                     <li key={category.name}>
@@ -271,6 +255,7 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
                   ))}
                 </ul>
 
+
                 {filters.map((section) => (
                   <Disclosure key={section.id} as="div" className="border-b border-gray-200 py-6 w-full">
                     <h3 className="-my-3 flow-root">
@@ -283,35 +268,26 @@ export default function CategoryFilters({ setTrilhaSelecionada, trilhaSelecionad
                       </DisclosureButton>
                     </h3>
                     <DisclosurePanel className="pt-6">
-                      <div className="space-y-4">
-                        {section.options.map((option, optionIdx) => (
-                          <div key={option.value} className="flex items-center">
-                            <input
-                              defaultValue={option.value}
-                              checked={aplicacoesSelecionadas.includes(option.value)} // Verifica se está selecionado
-                              id={`filter-${section.id}-${optionIdx}`}
-                              name={`${section.id}[]`}
-                              type="checkbox"
-                              onChange={(e) => {
-                                if (e.target.checked) {
-                                  // Se marcado, adiciona ao estado
-                                  setAplicacoesSelecionadas([...aplicacoesSelecionadas, option.value]);
-                                  setAplicacaoSelecionada(option.value); // Define a aplicação selecionada
-                                } else {
-                                  // Se desmarcado, remove do estado
-                                  setAplicacoesSelecionadas(aplicacoesSelecionadas.filter((value) => value !== option.value));
-                                  // Aqui você pode decidir o que fazer com setAplicacaoSelecionada, como limpar a seleção
-                                  setAplicacaoSelecionada(null); // Limpa a aplicação selecionada
-                                }
-                              }}
-                              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                            />
-                            <label htmlFor={`filter-${section.id}-${optionIdx}`} className="ml-3 text-sm text-gray-600">
-                              {option.label}
-                            </label>
-                          </div>
+                      <ul role="list" className="space-y-1  border-gray-200 text-sm font-medium text-gray-900">
+                        {section.options.map((option) => (
+                          <li key={option.label}>
+                            <a 
+                              onClick={() => setAplicacaoSelecionada(option.value)}
+                              className={`block px-2 py-3 cursor-pointer ${aplicacaoSelecionada === option.value ? 'text-blue-600 font-bold' : ''}`}
+                              >
+                                  {option.label}     
+                              </a>
+                          </li>
                         ))}
-                      </div>
+                          <li> 
+                            <a  
+                              onClick={() => setAplicacaoSelecionada(null)}
+                              className={`block px-2 py-3 cursor-pointer ${aplicacaoSelecionada === null ? 'text-blue-600 font-bold' : ''}`}
+                            > 
+                              Mostrar todos
+                            </a>
+                          </li>
+                      </ul>
                     </DisclosurePanel>
                   </Disclosure>
                 ))}
