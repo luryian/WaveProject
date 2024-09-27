@@ -1,0 +1,36 @@
+
+.body-audiovisual{
+
+    width: 99vw;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    flex-direction: column;
+    background-color: #96B1A8;
+
+}
+
+.ilha-audivisual{
+    padding-top: 5%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    background-color: #C6E0D9;
+
+}
+
+.asset-ilhaAudivisual{
+
+    width: 100vw;
+
+}
+
+.title-audivisual{
+    padding-top: 5%;
+    font-size: 80px;
+    font-weight: 800;
+    text-align: center;
+    color: #FCF4DF;
+    padding-bottom: 10%;
+
+}

@@ -76,7 +76,7 @@ useEffect(() => {
   
        <div className="text-details">
            <h1 className="title-details">{project?.nome}</h1>
-           <p className="description">descricao: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi dolores similique suscipit velit esse fuga nemo soluta repellat nihil nostrum explicabo ad, asperiores facere alias, dolore illum? Blanditiis, ipsa rem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur amet molestiae quo sequi perspiciatis nesciunt! Quam ratione totam dignissimos numquam, quibusdam laborum voluptatum saepe non, necessitatibus magni exercitationem cupiditate unde? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic temporibus eos corrupti, quidem rem error qui non, id, ad deserunt sequi quam. Quis sit vero distinctio eum sequi officia voluptates! Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere rerum itaque maiores quam tempora vitae cum laborum asperiores ad tempore, consequatur molestiae doloribus, explicabo ipsa! Vel minima fugit ad incidunt.</p>
+           <p className="description">{project?.descricao}</p>
 
            <div className="moreInfo">
            <h2 className="moreInfo-h2">Mais informações</h2>

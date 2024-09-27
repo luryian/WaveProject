@@ -77,6 +77,7 @@ export function Home() {
         navigate(path); // Caminho para onde quer redirecionar
     };
 
+    console.log(projetos)
     if (user){
         return(
             <div className="body">
